@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aerotops.dao.AerotopsDao;
 import com.aerotops.model.Booking;
+import com.aerotops.model.Flight;
 import com.aerotops.model.User;
 
 @Service("service")
@@ -70,6 +71,12 @@ public class AerotopsServiceImpl implements AerotopsService
 		{
 			return false;
 		}
+	}
+	@Override
+	public List<Flight> findAllFlights(String from, String to) {
+		List<Flight> list = getDao().readAllFlights(from,to);
+		return list;
+		
 	}
 	
 	
