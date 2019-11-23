@@ -25,7 +25,7 @@ public class AeroTopsBookingController {
 		return "Booking";
 	}
 	
-	//Booking Functionality  Code
+	//Booking Functionality 
 	@RequestMapping(path="addBooking.do", method=RequestMethod.POST)
 	public String addBooking(Booking booking,@RequestParam("totalTickets") String totalTickets)
 	{
