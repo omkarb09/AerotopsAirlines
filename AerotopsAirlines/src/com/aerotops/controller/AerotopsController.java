@@ -35,10 +35,7 @@ public class AerotopsController {
 		return "Home";
 	}
 	
-	@RequestMapping(path="loginSignUpPage")
-	public String loginSignUp(){
-		return "UserLogin";
-	}
+	
 	
 	@RequestMapping(path="AboutUsPage")
 	public String aboutUs(){
@@ -50,11 +47,7 @@ public class AerotopsController {
 		return "ContactUs";
 	}
 	
-	@RequestMapping(path="successfulUserLogin")
-	public String successfulUserLogin()
-	{
-		return "SuccessfulUserLogin";
-	}
+	
 	
 	
 	
@@ -81,14 +74,5 @@ public class AerotopsController {
 	
 	
 	
-	@RequestMapping(path="validateUserLogin.do", method=RequestMethod.POST)
-	public String validateUserLogin(@RequestParam("emailId") String email, @RequestParam("pwd") String password)
-	{
-		boolean result=service.checkUserLogin(email, password);
-		if(result){
-			return "SuccessfulUserLogin";
-		}else{
-			return "error";
-		}
-	}
+	
 }

@@ -7,8 +7,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<title>SuccessfulUserlogin</title>
-<style>
+ <style>
        .footer 
     {
         position: fixed;
@@ -21,14 +20,13 @@
         text-align: center;
     }
   </style>
+<title>Logout Successful</title>
 </head>
 <body>
-	<jsp:include page="NavBarWithUserLogout.jsp" /> 
-	<h2>UserLogin successful</h2>
-	<h2>Welcome ${sessionScope.email}</h2>
-	
-	<a href="bookingPage">Booking Page</a>
-	
-	<jsp:include page="footer.jsp" />  
+<jsp:include page="NavBar.jsp" />
+
+<h2>Logout Successful</h2>
+
+<jsp:include page="footer.jsp" /> 
 </body>
 </html>
