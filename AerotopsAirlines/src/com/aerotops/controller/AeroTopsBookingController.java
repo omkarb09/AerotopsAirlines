@@ -25,7 +25,7 @@ public class AeroTopsBookingController {
 		return "Booking";
 	}
 	
-	//Booking Functionality 
+	//Booking Functionality
 	@RequestMapping(path="addBooking.do", method=RequestMethod.POST)
 	public String addBooking(Booking booking,@RequestParam("totalTickets") String totalTickets)
 	{
@@ -35,6 +35,7 @@ public class AeroTopsBookingController {
 		booking.setNoOfTickets(Integer.parseInt(totalTickets));
 		//booking.setNoOfTickets(totalTickets);
 		
+		//calling service method
 		boolean result=service.addBooking(booking);
 		if(result)
 		{
