@@ -1,13 +1,17 @@
 package com.aerotops.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.aerotops.model.Booking;
+import com.aerotops.model.Flight;
 import com.aerotops.model.User;
 import com.aerotops.service.AerotopsService;
 
@@ -21,7 +25,27 @@ public class AerotopsController {
 	private Booking booking;
 	
 	@Autowired
+	private Flight flight;
+	
+	@Autowired
 	private AerotopsService service;
+	@RequestMapping(path="searchFlight")
+	public String searchFlightPage(){
+		return "SearchFlight";
+		
+	}
+	
+	@RequestMapping(path="searchFlight.do", method=RequestMethod.POST)
+	public String searchFlight(@RequestParam("from") String from,@RequestParam("to") String to,Model model) 	    
+	{	
+		List<Flight> list = service.findAllFlights(from,to);
+		model.addAttribute("flightlist", list);
+		if(list.size()!=0){
+			return "ViewFlight";
+		}
+		return "error";
+	}
+	
 	
 	@RequestMapping(path="/")
 	public String homePage(){

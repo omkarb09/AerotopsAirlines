@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import com.aerotops.model.Booking;
+import com.aerotops.model.Flight;
 import com.aerotops.model.User;
 
 @Repository
@@ -51,6 +52,17 @@ public class AerotopsDaoImpl implements AerotopsDao
 		tquery.setParameter("pass",password);
 		List<User> list=tquery.getResultList();
 		return list.size();
+	}
+	
+	@Override
+	public List<Flight> readAllFlights(String from, String to) {
+		String jpql = "select v from Flight v where v.from=:src AND v.to=:dst";
+		TypedQuery<Flight> tquery = entityManager.createQuery(jpql, Flight.class);
+		tquery.setParameter("src", from);
+		tquery.setParameter("dst", to);
+		List<Flight> list = tquery.getResultList();
+		return list;
+		
 	}
 
 }
