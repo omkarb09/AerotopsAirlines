@@ -1,3 +1,5 @@
+<%@ page errorPage="Error.jsp" %>
+<%@ page isErrorPage="true" %>
 <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                   <div class="navbar-header">

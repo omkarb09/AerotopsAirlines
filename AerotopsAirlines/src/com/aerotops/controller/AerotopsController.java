@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,7 +44,7 @@ public class AerotopsController {
 		if(list.size()!=0){
 			return "ViewFlight";
 		}
-		return "error";
+		return "Error";
 	}
 	
 	
@@ -92,8 +93,13 @@ public class AerotopsController {
 		}
 		else 
 		{
-			return "error";
+			return "Error";
 		}
+	}
+	@ExceptionHandler({Exception.class})
+	public String handleException()
+	{
+		return "Error";
 	}
 	
 	
