@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aerotops.dao.AerotopsDao;
+import com.aerotops.model.Airports;
 import com.aerotops.model.Booking;
 import com.aerotops.model.Flight;
+import com.aerotops.model.Ticket;
 import com.aerotops.model.User;
 
 @Service("service")
@@ -17,10 +19,13 @@ public class AerotopsServiceImpl implements AerotopsService
 	@Autowired
 	private AerotopsDao dao;
 	
+	@Autowired
+	private User user;
+	
 	@Override
 	@Transactional
 	public boolean addUser(User user) {
-		int result=dao.createUser(user);
+		int result=getDao().createUser(user);
 		if(result==1)
 		{
 			return true;
@@ -37,18 +42,17 @@ public class AerotopsServiceImpl implements AerotopsService
 		return null;
 	}
 
-	public AerotopsDao getDao() {
-		return dao;
+	@Override
+	public User findUser(String email) {
+		user=getDao().readUser(email);
+		return user;
 	}
-
-	public void setDao(AerotopsDao dao) {
-		this.dao = dao;
-	}
+	
 
 	@Override
 	@Transactional
 	public boolean addBooking(Booking booking) {
-		int result=dao.createBooking(booking);
+		int result=getDao().createBooking(booking);
 		if(result==1)
 		{
 			return true;
@@ -62,7 +66,7 @@ public class AerotopsServiceImpl implements AerotopsService
 	@Override
 	public boolean checkUserLogin(String email, String password) 
 	{
-		int result=dao.readUserLogin(email, password);
+		int result=getDao().readUserLogin(email, password);
 		if(result == 1)
 		{
 			return true;
@@ -78,6 +82,36 @@ public class AerotopsServiceImpl implements AerotopsService
 		return list;
 		
 	}
+
+	
+	public AerotopsDao getDao() {
+		return dao;
+	}
+
+	public void setDao(AerotopsDao dao) {
+		this.dao = dao;
+	}
+
+	@Override
+	public List<Airports> findAllAirports() {
+		List<Airports>list = getDao().readAllAirports();
+		return list;
+	}
+
+	@Override
+	@Transactional
+	public boolean addTicket(Ticket ticket) {
+		int result=getDao().createTicket(ticket);
+		if(result==1)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+
 	
 	
 

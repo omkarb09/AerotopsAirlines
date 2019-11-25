@@ -7,9 +7,12 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.aerotops.model.Airports;
 import com.aerotops.model.Booking;
 import com.aerotops.model.Flight;
+import com.aerotops.model.Ticket;
 import com.aerotops.model.User;
 
 @Repository
@@ -26,7 +29,22 @@ public class AerotopsDaoImpl implements AerotopsDao
 		
 		return 1;
 	}
+	
+	@Override
+	public User readUser(String email) {
+		String jpql= "select u from User u where u.email=:email";
+		
+		TypedQuery<User> tquery=entityManager.createQuery(jpql, User.class);
+		
+		//Query query = entityManager.createQuery(jpql);
+		tquery.setParameter("email", email);
+		
+		List<User> list=tquery.getResultList();
+		
+		return list.get(0);
+	}
 
+	
 	@Override
 	public List<User> readAllUsers() {
 		// TODO Auto-generated method stub
@@ -64,5 +82,31 @@ public class AerotopsDaoImpl implements AerotopsDao
 		return list;
 		
 	}
+
+	@Override
+	public List<Airports> readAllAirports() {
+		String jpql = "from Airports";
+		TypedQuery<Airports> tquery = entityManager.createQuery(jpql, Airports.class);
+		List<Airports> list = tquery.getResultList();
+		return list;
+	}
+
+	@Override
+	@Transactional
+	public int createTicket(Ticket ticket) 
+	{
+		entityManager.clear();
+		System.out.println(ticket);
+		entityManager.merge(ticket);
+		
+		return 1;
+	}
+
+
+	
+
+	
+	
+	
 
 }

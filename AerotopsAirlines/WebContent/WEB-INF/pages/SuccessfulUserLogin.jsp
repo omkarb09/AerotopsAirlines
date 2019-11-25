@@ -27,7 +27,7 @@
 	<h2>UserLogin successful</h2>
 	<h2>Welcome ${sessionScope.email}</h2>
 	
-	<a href="bookingPage">Booking Page</a>
+	<a href="bookingPage">Booking Page</a> | <a href="searchFlight">Search Flight</a>
 	
 	<jsp:include page="footer.jsp" />  
 </body>
