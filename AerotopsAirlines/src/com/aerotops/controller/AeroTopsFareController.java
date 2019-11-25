@@ -2,6 +2,8 @@ package com.aerotops.controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.aerotops.model.Booking;
 import com.aerotops.model.Flight;
+import com.aerotops.model.FlightClass;
+import com.aerotops.model.Seat;
 import com.aerotops.service.AerotopsService;
 
 @Controller
@@ -44,14 +48,20 @@ public class AeroTopsFareController {
 	public String getSeats()
 	{
 		booking=(Booking) session.getAttribute("booking");
-		flight=service.findFlight(booking.getFlightId());
-		
-		return null;
+		String classType=(String) session.getAttribute("classType");
+		int classId= service.findClassId(booking.getFlightId(), classType);
+		List<Seat> seats=service.findAllSeats(booking.getFlightId(), classId);
+		String cId= seats.get(0).getClassId()+"";
+		String noOfSeats=booking.getNoOfTickets()+"";
+		session.setAttribute("noOfSeats", noOfSeats);
+		session.setAttribute("seat", seats);
+		session.setAttribute("cId", cId);
+		return "SeatSelection";
 	}
 	
-	@RequestMapping(path="seatSelection")
+	/*@RequestMapping(path="seatSelection")
 	public String seatSelection()
 	{
 		return "SeatSelection";
-	}
+	}*/
 }

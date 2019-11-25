@@ -36,7 +36,9 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 		<property name="entityManagerFactory" ref="emf"/>
 	</bean>
 	
-	<mvc:resources mapping="/**" location="/" cache-period="31556926"/>
+	<mvc:resources mapping="/css/**" location="WebContent/resources/css/" cache-period="31556926"/>
+	<mvc:resources mapping="/js/**" location="WebContent/resources/images/" cache-period="31556926"/>
+	<mvc:resources mapping="/images/**" location="WebContent/resources/js/" cache-period="31556926"/>
     
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
