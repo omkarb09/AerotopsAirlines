@@ -14,6 +14,7 @@ public interface AerotopsService {
 	public boolean addTicket(Ticket ticket);
 	
 	public User findUser(String email);
+	public double findFare(int flightId ,String classType);
 	
 	public boolean checkAvailableTickets(int flightId, int noOfTickets ,String classType);
 	public boolean checkUserLogin(String email, String password);

@@ -15,6 +15,7 @@ public interface AerotopsDao {
 	public int createTicket(Ticket ticket);
 	
 	public User readUser(String email);
+	public double readFare(int flightId ,String classType);
 	public List<User> readAllUsers();
 	
 	public int readAvailableTickets(int flightId, int noOfTickets ,String classType);

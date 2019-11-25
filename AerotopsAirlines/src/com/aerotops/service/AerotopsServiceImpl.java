@@ -125,6 +125,12 @@ public class AerotopsServiceImpl implements AerotopsService
 		}
 	}
 
+	@Override
+	public double findFare(int flightId, String classType) {
+		double fare=getDao().readFare(flightId, classType);
+		return fare;
+	}
+
 	
 	
 

@@ -106,8 +106,8 @@ public class AerotopsDaoImpl implements AerotopsDao
 	@Override
 	public int readAvailableTickets(int flightId, int noOfTickets, String classType) {
 
-		System.out.println(flightId);
-		System.out.println(classType);
+		//System.out.println(flightId);
+		//System.out.println(classType);
 		String jpql = "select v from FlightClass v where v.flightId=:id AND v.classType=:classT";
 		TypedQuery<FlightClass> tquery = entityManager.createQuery(jpql, FlightClass.class);
 		tquery.setParameter("id", flightId);
@@ -121,6 +121,16 @@ public class AerotopsDaoImpl implements AerotopsDao
 		{
 			return 0;
 		}
+	}
+
+	@Override
+	public double readFare(int flightId, String classType) {
+		String jpql = "select v from FlightClass v where v.flightId=:id AND v.classType=:classT";
+		TypedQuery<FlightClass> tquery = entityManager.createQuery(jpql, FlightClass.class);
+		tquery.setParameter("id", flightId);
+		tquery.setParameter("classT", classType);
+		FlightClass fclass= tquery.getSingleResult();
+		return fclass.getBaseFare();
 	}
 
 

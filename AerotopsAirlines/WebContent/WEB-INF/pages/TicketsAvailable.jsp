@@ -9,8 +9,9 @@
 <body>
 <h2>Enough tickets available</h2>
 
+<h3>Total fare : ${sessionScope.fare}</h3>
 
-
+<a href="seatSelectionPage">Seat Selection</a>
 
 </body>
 </html>

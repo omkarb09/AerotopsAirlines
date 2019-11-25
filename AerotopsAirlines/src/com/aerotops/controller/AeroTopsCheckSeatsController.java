@@ -31,7 +31,7 @@ public class AeroTopsCheckSeatsController {
 		boolean result=service.checkAvailableTickets(booking.getFlightId(), booking.getNoOfTickets(), classType);
 		if(result)
 		{
-			return "TicketsAvailable";
+			return "redirect:calculateFare.do";
 		}
 		else
 		{
