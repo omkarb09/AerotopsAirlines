@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.aerotops.model.Booking;
 import com.aerotops.model.User;
 import com.aerotops.service.AerotopsService;
-
+//This is booking controller
 @Controller
 public class AeroTopsBookingController {
 	
