@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.aerotops.model.Booking;
+import com.aerotops.model.Flight;
 import com.aerotops.model.User;
 import com.aerotops.service.AerotopsService;
 //This is booking controller
@@ -25,6 +26,9 @@ public class AeroTopsBookingController {
 	
 	@Autowired
 	private User user;
+	
+	@Autowired
+	private Flight flight;
 	
 	@Autowired
 	HttpSession session;
@@ -39,8 +43,13 @@ public class AeroTopsBookingController {
 	@RequestMapping(path="addBooking.do", method=RequestMethod.POST)
 	public String addBooking(Booking booking,@RequestParam("totalTickets") String totalTickets,@RequestParam("classType") String classType)
 	{
-		booking.setClassId(1);
-		booking.setFlightId(4001);
+		booking.setClassId(49);
+		booking.setFlightId(5028);
+		
+		/*flight= service.findFlight(booking.getFlightId());
+		System.out.println(flight);
+		session.setAttribute("flight", flight);*/
+
 		booking.setBookingDate(new Date());
 		booking.setNoOfTickets(Integer.parseInt(totalTickets));
 		//booking.setNoOfTickets(totalTickets);
@@ -67,9 +76,9 @@ public class AeroTopsBookingController {
 		
 	}
 	
-	@ExceptionHandler({Exception.class})
+	/*@ExceptionHandler({Exception.class})
 		public String handleException()
 	{
 		return "Error";
-	}
+	}*/
 }

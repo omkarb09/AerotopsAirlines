@@ -110,7 +110,7 @@ public class AerotopsDaoImpl implements AerotopsDao
 
 		//System.out.println(flightId);
 		//System.out.println(classType);
-		String jpql = "select v from FlightClass v where v.flightId=:id AND v.classType=:classT";
+		String jpql = "select v from FlightClass v Inner Join v.flight a where a.flightId=:id AND v.classType=:classT";
 		TypedQuery<FlightClass> tquery = entityManager.createQuery(jpql, FlightClass.class);
 		tquery.setParameter("id", flightId);
 		tquery.setParameter("classT", classType);
@@ -127,7 +127,7 @@ public class AerotopsDaoImpl implements AerotopsDao
 
 	@Override
 	public double readFare(int flightId, String classType) {
-		String jpql = "select v from FlightClass v where v.flightId=:id AND v.classType=:classT";
+		String jpql = "select v from FlightClass v Inner Join v.flight a where a.flightId=:id AND v.classType=:classT";
 		TypedQuery<FlightClass> tquery = entityManager.createQuery(jpql, FlightClass.class);
 		tquery.setParameter("id", flightId);
 		tquery.setParameter("classT", classType);

@@ -164,11 +164,14 @@ public class Flight implements Serializable{
 	}
 
 
+	
+
+
 	@Override
 	public String toString() {
 		return "Flight [flightId=" + flightId + ", from=" + from + ", to=" + to + ", departureTime=" + departureTime
 				+ ", arrivalTime=" + arrivalTime + ", dateOfDeparture=" + dateOfDeparture + ", dateOfArrival="
-				+ dateOfArrival + ", flightStatus=" + flightStatus + "]";
+				+ dateOfArrival + ", flightStatus=" + flightStatus + ", flightclass=" + flightclass + "]";
 	}
 
 
