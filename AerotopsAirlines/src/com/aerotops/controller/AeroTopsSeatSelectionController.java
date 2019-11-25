@@ -3,6 +3,7 @@ package com.aerotops.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.aerotops.model.Booking;
@@ -22,5 +23,11 @@ public class AeroTopsSeatSelectionController {
 	public String seatSelectionPage()
 	{
 		return "SeatSelection";
+	}
+	
+	@ExceptionHandler({Exception.class})
+	public String handleException()
+	{
+		return "Error";
 	}
 }

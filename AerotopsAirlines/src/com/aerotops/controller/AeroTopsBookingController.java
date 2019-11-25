@@ -71,14 +71,14 @@ public class AeroTopsBookingController {
 		}
 		else
 		{
-			return "error";
+			return "Error";
 		}
 		
 	}
 	
-	/*@ExceptionHandler({Exception.class})
-		public String handleException()
+	@ExceptionHandler({Exception.class})
+	public String handleException()
 	{
 		return "Error";
-	}*/
+	}
 }

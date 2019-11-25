@@ -43,7 +43,7 @@
 
             <div class="form-group">
                     <div class="col-sm-offset-5 col-sm-5">
-                            <a href="#link" class="linkFP" role="button"> Forgot Password?</a>
+                            <a href="forgotPasswordPage" class="linkFP" role="button"> Forgot Password?</a>
                     </div>
             </div>
             <br>

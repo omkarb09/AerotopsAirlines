@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,6 +42,7 @@ public class AerotopsAdminController {
 		return "AdminLogin";
 	}
 	
+	//
 	@RequestMapping(path="validateLogin", method=RequestMethod.GET)
 	public String validateLogin(@RequestParam("uname") String username, @RequestParam("pwd") String password,HttpServletRequest request)
 		{
@@ -183,6 +185,11 @@ public class AerotopsAdminController {
 		List<FlightClass> list = service.findAllCLass();
 		model.addAttribute("flightclasslist", list);
 		return "ViewClass";
+	}
+	@ExceptionHandler({Exception.class})
+	public String handleException()
+	{
+		return "Error";
 	}
 	
 }
