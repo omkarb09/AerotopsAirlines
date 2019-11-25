@@ -5,6 +5,7 @@ import java.util.List;
 import com.aerotops.model.Airports;
 import com.aerotops.model.Booking;
 import com.aerotops.model.Flight;
+import com.aerotops.model.FlightClass;
 import com.aerotops.model.Ticket;
 import com.aerotops.model.User;
 
@@ -23,5 +24,16 @@ public interface AerotopsService {
 	
 	public List<Airports> findAllAirports();
 	
+	
+	public boolean checkLogin(String username,String password);
+	
+	public boolean addFlight(Flight flight);
+	public boolean addClass(FlightClass flightclass);
+
+	public List<Flight> findAllFlights();
+	public List<FlightClass> findAllCLass();
+
+	public boolean cancelFlight(int flightId);
+    public Flight findFlight(int flightID);
 	
 }

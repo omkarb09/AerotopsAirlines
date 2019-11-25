@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aerotops.model.Admin;
 import com.aerotops.model.Airports;
 import com.aerotops.model.Booking;
 import com.aerotops.model.Flight;
@@ -113,7 +115,7 @@ public class AerotopsDaoImpl implements AerotopsDao
 		tquery.setParameter("id", flightId);
 		tquery.setParameter("classT", classType);
 		FlightClass fclass= tquery.getSingleResult();
-		if(fclass.getAvailabeSeats()>=noOfTickets)
+		if(fclass.getAvailseats()>=noOfTickets)
 		{
 			return 1;
 		}
@@ -133,11 +135,72 @@ public class AerotopsDaoImpl implements AerotopsDao
 		return fclass.getBaseFare();
 	}
 
+	
+	
+	 public int readLogin(String username, String password) {
+			
+			String jpql= "select a from Admin a where a.username=:unm AND a.password=:pass";
+			TypedQuery<Admin> tquery=entityManager.createQuery(jpql, Admin.class);
+			
+			Query query = entityManager.createQuery(jpql);
+			tquery.setParameter("unm", username);
+			tquery.setParameter("pass",password);
+			List<Admin> list=tquery.getResultList();
+			return list.size();
+		}
 
-	
 
-	
-	
-	
+		@Override
+		public int createFlight(Flight flight) {
+			entityManager.persist(flight);		
+			return 1;
+		}
 
+		@Override
+		public int createClass(FlightClass flightClass) {
+			entityManager.persist(flightClass);		
+			return 1;
+			
+		}
+
+
+		@Override
+		public List<Flight> readAllFlights() {
+			String jpql = "From Flight";
+			TypedQuery<Flight> tquery = entityManager.createQuery(jpql, Flight.class);
+			List<Flight> list = tquery.getResultList();
+			return list;
+		}
+
+
+		@Override
+		public int deleteFLight(int flightId) {
+		String jpql="Update Flight f Set f.flightStatus='Cancelled' where  f.flightId=:fid";
+		Query query=entityManager.createQuery(jpql);
+		query.setParameter("fid", flightId);
+		int result = query.executeUpdate();
+		return result;
+		}
+
+
+		@Override
+		public List<FlightClass> readAllClass() {
+			String jpql = "From FlightClass";
+			TypedQuery<FlightClass> tquery = entityManager.createQuery(jpql, FlightClass.class);
+			List<FlightClass> list = tquery.getResultList();
+			return list;
+		}
+
+		@Override
+		public Flight readFlight(int flightID) {
+			
+				String jpql= "select f from Flight f where f.flightId=:fId";
+				TypedQuery<Flight> tquery=entityManager.createQuery(jpql, Flight.class);
+				tquery.setParameter("fId", flightID);
+				
+				List<Flight> list =tquery.getResultList();
+				
+				return list.get(0);
+
+			}
 }
