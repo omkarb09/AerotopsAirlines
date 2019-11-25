@@ -9,6 +9,8 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
    <title>Booking Ticket</title>
    <script> 
+   	
+   
 		function calculateTickets() {
 		   var adult=Number(document.getElementById('adult').value);
 		   
@@ -57,7 +59,7 @@
 
 
 
-        <form class="form-horizontal" action="addBooking.do" method="post">
+        <form class="form-horizontal" action="homePage" method="post">
                
             <h1 align="center"><b>Booking Information</b></h1><br><br><br>
             <div class="form-group">
