@@ -13,61 +13,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <title>Document</title>
-    <!-- <script>
-      function validateForm() {
-        var u = document.forms["login"]["uname"].value;
-        var p = document.forms["login"]["pwd"].value;
-        if (u == "") {
-        alert("Username must be filled out");
-          return false;
-        }
-        else if(p==""){
-          alert("password` must be filled out");
-          return false;
-        }
-        else{
-        var form=document.getElementById("login");
-        form.action="";
-        form.submit();
-    }
-      }
-      </script> -->
-    <style>
-    .btn-primary,
-    .btn-primary:hover,
-    .btn-primary:active,
-    .btn-primary:visited,
-    .btn-primary:focus 
-    {
-        background-color: rgb(0, 0, 0);
-        border-color: rgb(0, 0, 0);
-    }
-    .linkFP,
-    .linkFP:hover,
-    .linkFP:active,
-    .linkFP:visited,
-    .linkFP:focus 
-    {
-        text-decoration: none;
-        color: rgb(41, 6, 138);
-    }
-    .footer 
-    {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 6%;
-        background-color: black;
-        color: white;
-        text-align: center;
-    }
-    .col-sm-7{
-        text-align: center;
-    }
-    
-    </style>
+    <title>User LogIn</title>
+     <style type="text/css">
+  <%@include file="/resources/css/LogIn.css" %>
+</style>
 </head>
 <body>
 
@@ -81,14 +30,14 @@
             <div class="form-group">
               <label class="control-label col-sm-3" for="uname">Email:</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="emailid" name="emailId" placeholder="Enter user ID or email id">
+                <input type="text" class="form-control" id="emailid" name="emailId" required placeholder="Enter user ID or email id">
               </div>
             </div>
 
             <div class="form-group">
               <label class="control-label col-sm-3" for="pwd">Password:</label>
               <div class="col-sm-7">
-                <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
+                <input type="password" class="form-control" id="pwd" name="pwd" required placeholder="Enter password">
               </div>   
             </div><br>
 
@@ -114,7 +63,6 @@
             </div>
 
             <jsp:include page="footer.jsp" />  
-        </body>
+     </body>
 </html>
            
-</html>

@@ -8,38 +8,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <style>
-      body{
-          text-align: center;
-         
-      }
-      .text-center{
-        font-size: 15px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        margin-top: 50px;
-         height: 500px;
-        background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.5)); /* Standard syntax (must be last) */
-}
-
-      
-      
-       .footer 
-    {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 6%;
-        background-color: black;
-        color: white;
-        text-align: center;
-    }
-    .paragraph{
-        font-family: 'Times New Roman';
-        font: 5px;
-      
-    }
-  </style>
+ <style type="text/css">
+  <%@include file="/resources/css/AboutUs.css" %>
+</style>
 <title>About Us</title>
 </head>
 <body>

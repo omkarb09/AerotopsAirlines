@@ -9,52 +9,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>User Registration</title>
-<style>
-    .btn-info,
-    .btn-info:hover,
-    .btn-info:active,
-    .btn-info:visited,
-    .btn-info:focus 
-    {
-        background-color: rgb(0, 0, 0);
-        border-color: rgb(0, 0, 0);
-    }
-    .linkFP,
-    .linkFP:hover,
-    .linkFP:active,
-    .linkFP:visited,
-    .linkFP:focus 
-    {
-        text-decoration: none;
-        color: rgb(41, 6, 138);
-    }
-    .footer 
-    {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 6%;
-        background-color: black;
-        color: white;
-        text-align: center;
-    }
-    .col-sm-6{
-        width:100px;
-    }
-    .col-sm-7{
-       
-        width:200px;
-        text-align: center;
-   
-    }
-    
-    </style>
-
-
+<script type="text/javascript" src="resources/js/validation.js"></script>
+ <style type="text/css">
+  <%@include file="/resources/css/AddUser.css" %>
+</style>
 </head>
 <body>
-
   <jsp:include page="NavBar.jsp" /> 
     
     <div class="container">   
@@ -74,50 +34,51 @@
 			<div class="form-group">
 			<label class="control-label col-sm-5" for="fname">First Name</label>
 			<div class="col-sm-7">
-			<input type="text" class="form-control" id="fname" name="firstName" placeholder="Enter first name">
+			<input type="text" class="form-control" id="fname" name="firstName" required placeholder="Enter first name">
 			</div>
 			</div>
 			
 			<div class="form-group">
 			<label class="control-label col-sm-5" for="lname">Last Name</label>
 			<div class="col-sm-7">
-			<input type="text" class="form-control" id="lname" name="lastName" placeholder="Enter last name">
+			<input type="text" class="form-control" id="lname" name="lastName" required placeholder="Enter last name">
 			</div>   
 			</div>
 			
 			<div class="form-group">
 			<label class="control-label col-sm-5" for="email">Email Id</label>
 			<div class="col-sm-7">
-			    <input type="email" class="form-control" id="email" name="email" placeholder="e.g., abc@xyz.com">
+			    <input type="email" class="form-control" id="email" name="email" required placeholder="e.g., abc@xyz.com">
 			</div>   
 			</div>
 
 			<div class="form-group">
 		    <label class="control-label col-sm-5" for="pwd">Password</label>
 		    <div class="col-sm-7">
-		        <input type="password" class="form-control" id="pwd" name="password" required
-					maxlength="8" size="15" placeholder="Password" />
+		        <input type="password" class="form-control" id="pwd" name="password" pattern="(?=.*\d)(?=.*[@,#,*,&])(?=.*[a-z])(?=.*[A-Z]).{8,16}" required 
+						placeholder="Password" title="Must contain at least one number and one uppercase and lowercase letter and 1 special character and 1 number, and 8 to 16 characters" />
 		    </div>   
 		    </div>
 		
 		    <div class="form-group">
 		        <label class="control-label col-sm-5" for="pwd">Confirm Password</label>
 		        <div class="col-sm-7">
-		            <input type="password" class="form-control" id="cpwd" name="cpwd" >
-		        </div>   
+		             <input type="password" class="form-control" id="cpwd" required name="cpwd" onchange="validatePassword()"> 
+		        </div> 
+		        <label id="valid"></label>  
 		        </div>
 		
 		        <div class="form-group">
-		            <label class="control-label col-sm-5" for="sel1 ">Date Of Birth:</label>
+		            <label class="control-label col-sm-5" for="sel1">Date Of Birth:</label>
 		            <div class="col-sm-7">
-		            <input type="date" name="dateOfBirth">
+		            <input type="date" name="dateOfBirth" required>
 		        </div>
 		    </div>
 		
 		    <div class="form-group">
 		            <label class="control-label col-sm-5" for="pwd">Phone Number</label>
 		            <div class="col-sm-7">
-		                <input type="text" class="form-control" id="phone" name="phoneNumber" placeholder="Enter Phone Number">
+		                <input type="text" class="form-control" id="phone" name="phoneNumber" pattern="[0-9]{10}" required placeholder="Enter Phone Number">
 		            </div>   
 		            </div>
 

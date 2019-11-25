@@ -54,20 +54,10 @@
 	
 	function removeSame()
 	{
-		/* var fromDropDown = document.getElementById("from").value;
-		var toDropDown = document.getElementById("to");
-		
-		
-		for(var j=0; j<toDropDown.length; j++)
+		if(document.getElementById('from').value==document.getElementById('to').value) 
 		{
-			value = toDropDown[j].value;
-			if(fromDropDown==value)
-			{
-				toDropDown.remove(j);
-			}
-			
-		} */
-		
+		    window.alert("source and destination canot be same");
+		}
 		
 	}
 </script>
