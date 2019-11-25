@@ -44,7 +44,7 @@ public class AerotopsController {
 		if(list.size()!=0){
 			return "ViewFlight";
 		}
-		return "Error";
+		return "error";
 	}
 	
 	
@@ -93,7 +93,7 @@ public class AerotopsController {
 		}
 		else 
 		{
-			return "Error";
+			return "error";
 		}
 	}
 	@ExceptionHandler({Exception.class})

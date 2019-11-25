@@ -59,7 +59,7 @@ public class AeroTopsLoginController {
 			return "SuccessfulUserLogin";
 			
 		}else{
-			return "Error";
+			return "error";
 		}
 	}
 	@ExceptionHandler({Exception.class})

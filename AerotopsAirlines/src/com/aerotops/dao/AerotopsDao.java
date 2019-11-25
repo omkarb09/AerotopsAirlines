@@ -16,6 +16,8 @@ public interface AerotopsDao {
 	
 	public User readUser(String email);
 	public List<User> readAllUsers();
+	
+	public int readAvailableTickets(int flightId, int noOfTickets ,String classType);
 	public int readUserLogin(String email, String password);
 	public List<Flight> readAllFlights(String from, String to);
 	public List<Airports> readAllAirports();

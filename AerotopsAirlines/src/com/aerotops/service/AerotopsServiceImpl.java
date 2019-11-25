@@ -112,6 +112,19 @@ public class AerotopsServiceImpl implements AerotopsService
 		}
 	}
 
+	@Override
+	public boolean checkAvailableTickets(int flightId, int noOfTickets, String classType) {
+		int result=getDao().readAvailableTickets(flightId, noOfTickets, classType);
+		if(result == 1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	
 	
 

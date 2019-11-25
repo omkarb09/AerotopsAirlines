@@ -35,10 +35,9 @@ public class AeroTopsBookingController {
 		return "Booking";
 	}
 	
-	
 	//Booking Functionality committed
 	@RequestMapping(path="addBooking.do", method=RequestMethod.POST)
-	public String addBooking(Booking booking,@RequestParam("totalTickets") String totalTickets)
+	public String addBooking(Booking booking,@RequestParam("totalTickets") String totalTickets,@RequestParam("classType") String classType)
 	{
 		booking.setClassId(1);
 		booking.setFlightId(4001);
@@ -52,16 +51,18 @@ public class AeroTopsBookingController {
 		booking.setUser(user);
 		
 		session.setAttribute("booking", booking);
+		session.setAttribute("classType", classType);
 		
 		//calling service method
 		boolean result=service.addBooking(booking);
 		if(result)
 		{
-			return "addTicket.do";
+			return "redirect:checkTickets.do";
+			//return "addTicket.do";
 		}
 		else
 		{
-			return "Error";
+			return "error";
 		}
 		
 	}

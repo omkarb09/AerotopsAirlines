@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aerotops.model.Airports;
 import com.aerotops.model.Booking;
 import com.aerotops.model.Flight;
+import com.aerotops.model.FlightClass;
 import com.aerotops.model.Ticket;
 import com.aerotops.model.User;
 
@@ -100,6 +101,26 @@ public class AerotopsDaoImpl implements AerotopsDao
 		entityManager.merge(ticket);
 		
 		return 1;
+	}
+
+	@Override
+	public int readAvailableTickets(int flightId, int noOfTickets, String classType) {
+
+		System.out.println(flightId);
+		System.out.println(classType);
+		String jpql = "select v from FlightClass v where v.flightId=:id AND v.classType=:classT";
+		TypedQuery<FlightClass> tquery = entityManager.createQuery(jpql, FlightClass.class);
+		tquery.setParameter("id", flightId);
+		tquery.setParameter("classT", classType);
+		FlightClass fclass= tquery.getSingleResult();
+		if(fclass.getAvailabeSeats()>=noOfTickets)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
 	}
 
 

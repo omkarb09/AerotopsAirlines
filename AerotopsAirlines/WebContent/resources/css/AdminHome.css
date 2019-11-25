@@ -1,0 +1,38 @@
+  body{
+    text-align: center;
+  }
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px; 
+  margin-top: 80px;
+  height: 500px;
+  height:80%;
+  width: 60%;
+}
+    .btn1{
+        background-color: rgb(7, 8, 7);
+        padding: 8px 20px;
+        border: none;
+        cursor: pointer;
+        
+     
+    }
+    a{
+        text-decoration: none;
+        color: aliceblue;
+    }
+    a:hover{
+        text-decoration: none;
+        color: aliceblue;
+
+    }
+    a:active{
+        text-decoration: none;
+        color: aliceblue;
+    }
+    a:visited{
+        text-decoration: none;
+        color: aliceblue;
+    }
+  

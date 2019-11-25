@@ -56,9 +56,9 @@ public class Flight implements Serializable{
 	@Column(name="flight_status")
 	private String flightStatus;
 	
-	/*@OneToMany(mappedBy="flight", cascade=CascadeType.ALL)
+/*	@OneToMany(mappedBy="flight", cascade=CascadeType.ALL)
 	private Set<FlightClass> flightclass = new HashSet<>();*/
-
+	
 
 	public Flight() {
 		super();

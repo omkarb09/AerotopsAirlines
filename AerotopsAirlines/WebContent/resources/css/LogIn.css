@@ -1,0 +1,22 @@
+  .btn-primary,
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-primary:visited,
+    .btn-primary:focus 
+    {
+        background-color: rgb(0, 0, 0);
+        border-color: rgb(0, 0, 0);
+    }
+    .linkFP,
+    .linkFP:hover,
+    .linkFP:active,
+    .linkFP:visited,
+    .linkFP:focus 
+    {
+        text-decoration: none;
+        color: rgb(41, 6, 138);
+    }
+ 
+    .col-sm-7{
+        text-align: center;
+    }

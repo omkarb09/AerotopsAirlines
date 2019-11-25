@@ -1,4 +1,3 @@
-<%@ page errorPage="Error.jsp" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -55,14 +54,50 @@
 
 </head>
 <body>
-	<jsp:include page="NavBar.jsp" /> 
+	<jsp:include page="NavBarWithUserLogout.jsp" /> 
     <div class="container">   
 
 
 
-        <form class="form-horizontal" action="homePage" method="post">
+        <form class="form-horizontal" action="addBooking.do" method="post">
                
-            <h1 align="center"><b>Booking Information</b></h1><br><br><br>
+            <h1 align="center"><b>Booking Information</b></h1><br>
+            
+            <div class="form-group">
+                    <label class="control-label col-sm-5" for="sel1 ">FROM:</label>
+                    <div class="col-sm-6">
+                    <select class="form-control" id="sel1" name="departureFrom">
+                      <option value="Mumbai">Mumbai</option>
+                      <option value="Delhi">Delhi</option>
+                      <option value="Chennai">Chennai</option>
+                      <option value="Banglore">Banglore</option>
+                    </select>
+                  </div>
+                    </div>
+
+                    <div class="form-group">
+                            <label class="control-label col-sm-5" for="sel1 ">TO:</label>
+                            <div class="col-sm-6">
+                            <select class="form-control  " id="sel1" name="arrivalTo">
+                              <option value="Mumbai">Mumbai</option>
+                              <option value="Delhi">Delhi</option>
+                              <option value="Chennai">Chennai</option>
+                              <option value="Banglore">Banglore</option>
+                            </select>
+                          </div>
+                            </div>
+                          
+                          
+             <div class="form-group">
+              <label class="control-label col-sm-5" >SELECT CLASS TYPE:</label>
+              <div class="col-sm-4">
+                <label class="radio-inline"><input type="radio" name="classType" value="EC" checked>Economy Class</label>
+                <label class="radio-inline"><input type="radio" name="classType" value="BC">Business Class</label>
+                <label class="radio-inline"><input type="radio" name="classType" value="FC" checked>First Class</label>
+              </div>
+            </div>
+                    
+            
             <div class="form-group">
               <label class="control-label col-sm-5" for="email">SELECT TRIP TYPE:</label>
               <div class="col-sm-6">
@@ -92,29 +127,7 @@
 
              
               
-                    <div class="form-group">
-                    <label class="control-label col-sm-5" for="sel1 ">FROM:</label>
-                    <div class="col-sm-6">
-                    <select class="form-control" id="sel1" name="departureFrom">
-                      <option value="Mumbai">Mumbai</option>
-                      <option value="Delhi">Delhi</option>
-                      <option value="Chennai">Chennai</option>
-                      <option value="Banglore">Banglore</option>
-                    </select>
-                  </div>
-                    </div><br>
-
-                    <div class="form-group">
-                            <label class="control-label col-sm-5" for="sel1 ">TO:</label>
-                            <div class="col-sm-6">
-                            <select class="form-control  " id="sel1" name="arrivalTo">
-                              <option value="Mumbai">Mumbai</option>
-                              <option value="Delhi">Delhi</option>
-                              <option value="Chennai">Chennai</option>
-                              <option value="Banglore">Banglore</option>
-                            </select>
-                          </div>
-                            </div>
+                    
 
                     <div class="form-group">
                     		<input type='hidden' id= "totalTickets" name="totalTickets" value="" />
@@ -175,6 +188,6 @@
                                 </div></div>
         </form>
         </div>
-         <jsp:include page="footer.jsp" />  
+         <jsp:include page="footer.jsp" />    
 </body>
 </html>
