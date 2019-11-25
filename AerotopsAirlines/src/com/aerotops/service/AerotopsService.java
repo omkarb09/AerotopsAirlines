@@ -6,7 +6,6 @@ import com.aerotops.model.Airports;
 import com.aerotops.model.Booking;
 import com.aerotops.model.Flight;
 import com.aerotops.model.FlightClass;
-import com.aerotops.model.Seat;
 import com.aerotops.model.Ticket;
 import com.aerotops.model.User;
 
@@ -17,8 +16,6 @@ public interface AerotopsService {
 	
 	public User findUser(String email);
 	public double findFare(int flightId ,String classType);
-	public int findClassId(int flightId ,String classType);
-	public List<Seat> findAllSeats(int flightId ,int classId);
 	
 	public boolean checkAvailableTickets(int flightId, int noOfTickets ,String classType);
 	public boolean checkUserLogin(String email, String password);

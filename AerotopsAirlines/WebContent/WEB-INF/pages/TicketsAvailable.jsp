@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- <jsp:include page="NavBarWithUserLogout.jsp" /> 
+ <jsp:include page="NavBar.jsp" /> 
     <h2>Enough tickets available</h2>
 
 	<h3>Total fare : ${sessionScope.fare}</h3>

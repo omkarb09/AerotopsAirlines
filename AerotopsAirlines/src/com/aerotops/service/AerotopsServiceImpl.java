@@ -11,7 +11,6 @@ import com.aerotops.model.Airports;
 import com.aerotops.model.Booking;
 import com.aerotops.model.Flight;
 import com.aerotops.model.FlightClass;
-import com.aerotops.model.Seat;
 import com.aerotops.model.Ticket;
 import com.aerotops.model.User;
 
@@ -211,20 +210,6 @@ public class AerotopsServiceImpl implements AerotopsService
 			return flight;
 	
 	}
-
-	@Override
-	public int findClassId(int flightId, String classType) {
-		int classId=getDao().readClassId(flightId, classType);
-		return classId;
-	}
-
-	@Override
-	public List<Seat> findAllSeats(int flightId, int classId) {
-		List<Seat> list = getDao().readAllSeats(flightId, classId);
-		return list;
-	}
-
-	
 	
 	
 
