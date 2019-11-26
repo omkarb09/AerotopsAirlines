@@ -39,8 +39,8 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="smtp.gmail.com"/>
         <property name="port" value="587" />
-        <property name="username" value="srushtimagar1098@gmail.com"/>
-        <property name="password" value="SrushtiMagar@79133"/>
+        <property name="username" value="aerotopsairlines@gmail.com"/>
+        <property name="password" value="AeroTops@1234"/>
         <property name="javaMailProperties">
             <props>
                 <prop key="mail.transport.protocol">smtp</prop>
@@ -55,13 +55,14 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 </bean>
     
     <bean id="preConfiguredMessage" class="org.springframework.mail.SimpleMailMessage">
-        <property name="from" value="srushtimagar1098@gmail.com"></property>
+        <property name="from" value="aerotopsairlines@gmail.com"></property>
     </bean>
 	
 	
-	<mvc:resources mapping="/**" location="/" cache-period="31556926"/>
+	
     
 	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<mvc:resources mapping="/**" location="/" cache-period="31556926"/>
 	
 
 </beans>
