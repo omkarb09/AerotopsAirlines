@@ -67,7 +67,7 @@ public class AeroTopsLoginController {
 			return "SuccessfulUserLogin";
 			
 		}else{
-			return "error";
+			return "Error";
 		}
 	}
 	
@@ -79,7 +79,7 @@ public class AeroTopsLoginController {
 			user=service.findUser(userId);
 			String pass=user.getPassword();
 			System.out.println(pass);
-			message.setTo(userId); //set a proper recipient of the mail
+			message.setTo(userId); 
 			message.setSubject("Request for a new password");
 			message.setText("Hello, your password is "+pass+".");
 			mailSender.send(message);
