@@ -5,22 +5,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+  <%@include file="/resources/css/ForgotPass.css" %>
+</style>
 <title>Forgot password</title>
 </head>
 <body>
- 
- <form class="form-horizontal" id="login" action="forgotPassword.do" method="post">
-               
-               <h2 align="center">Forgot Password</h2><br>
-            <div class="form-group">
-              <label class="control-label col-sm-3" for="uname">Please enter your Email:</label>
-              <div class="col-sm-7">
-                <input type="text" class="form-control" id="emailid" name="emailId" required placeholder="Enter user ID or email id">
-              </div>
-                                    <input type="submit" class="btn btn-primary" value="Submit">
+
+<jsp:include page="NavBar.jsp" />  
+<div class="container">
+                <div style="text-align:center">
+                    <h2>Forgot Password</h2>
+                    
+           
+            </div>
+ <div class="column">
+ <form id="login" action="forgotPassword.do" method="post">
+              <label class="control-label col-sm-3" for="uname">Enter your Email:</label>
               
-              </div>
+                <input type="text" class="form-control" id="emailid" name="emailId" required placeholder="Enter user ID or email id">
+              <br><br><br><br>
+               <input type="submit" class="btn btn-primary" value="Submit">
+              
+              
  </form>
+ </div>
+ </div>
   <jsp:include page="footer.jsp" />    
  
 </body>

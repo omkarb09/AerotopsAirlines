@@ -10,6 +10,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>Add Flight</title>
+    <script type="text/javascript" src="resources/js/flightDetailsValidation.js"></script>
    <script type="text/javascript">
 	var cities;
 
@@ -54,26 +55,14 @@
 			
 	});
 	
-	
-
-		function removeSame()
-			{
-				if(document.getElementById('from').value==document.getElementById('to').value) 
-				{
-			    	window.alert("source and destination canot be same");
-				}
-			
-			}
 	</script>
     <style type="text/css">
   <%@include file="/resources/css/AddFlight.css" %>
 </style>
 
- 
- 
 </head>
 <body>
-        <jsp:include page="NavBar.jsp" /> 
+        <jsp:include page="AdminNavLogOut.jsp" /> 
               <div class="container">
                     <div style="text-align:center">
                         <h2>Add Flight</h2>
@@ -84,30 +73,24 @@
                              
 
                                 <label for="source">From</label>
-                                <select name="from" id="from" >
-                                        <option value="Mumbai">Mumbai</option>
-                                        <option value="Pune">Pune</option>
-                                        <option value="Jaipur">Jaipur</option>
-                                        <option value="Udaipur">Udaipur</option>
-                                  </select>
+                                <select class="form-control" id="from" name="from" required >
+	                  					<option value="">-- Select --</option>
+	       						</select>
                                   <label for="destination">To</label>
-                                  <select name="to" id="to" onchange="removeSame()">
-                                        <option value="Mumbai">Mumbai</option>
-                                    <option value="Pune">Pune</option>
-                                        <option value="Jaipur">Jaipur</option>
-                                        <option value="Udaipur">Udaipur</option>
-                                  </select>
+		                              <select class="form-control  " id="to" name="to" onclick="removeSame()" required>
+		              						<option value="">-- Select --</option>
+		                				</select>
                                   <label for="departure_time">Departure Time</label>
-                                  <input type="time" name="departureTime">
+                                  <input type="time" name="departureTime" id="deptTime" required>
 
                                   <label for="Arrival Time">Arrival Time</label>
-                                  <input type="time" name="arrivalTime">
+                                  <input type="time" name="arrivalTime" id="arrvTime" required>
 
                                   <label for="dept_date">Date Of Departure</label>
-                                  <input type="date" name="dateOfDeparture">
+                                  <input type="date" id="deptd" name="dateOfDeparture" required>
 
                                   <label for="arrv_date">Date Of Arrival</label>
-                                  <input type="date" name="dateOfArrival">
+                                  <input type="date" name="dateOfArrival" id="arrvd" onblur="compare()" required>
 
                                   <label for="flight_status">Flight Status</label>
                                   <select name="flightStatus">
@@ -117,7 +100,7 @@
                                   
                                 <br>
                                 <br>
-                                    <input type="submit" value="Add Flight">
+                                    <input type="submit" value="Add Flight" onclick="removeSame()">
 
                                   </form>
                                   </div>

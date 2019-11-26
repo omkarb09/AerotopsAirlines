@@ -5,9 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>password success</title>
 </head>
 <body>
+ <jsp:include page="NavBar.jsp" /> 
 <h3>Password has been successfully sent to your email ID</h3>
+ <jsp:include page="footer.jsp" />   
 </body>
 </html>

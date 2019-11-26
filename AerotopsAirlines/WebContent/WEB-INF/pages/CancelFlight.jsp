@@ -16,7 +16,7 @@
 </style>
 
 <body>
-       <jsp:include page="NavBarWithUserLogout.jsp" /> 
+       <jsp:include page="AdminNavLogOut.jsp" /> 
               <div class="container">
                     <div style="text-align:center">
                         <h3>Enter Flight Details To Cancel Flight Here : </h3>

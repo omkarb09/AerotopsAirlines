@@ -17,7 +17,7 @@
  
 </head>
 <body>
-        <jsp:include page="NavBar.jsp" /> 
+        <jsp:include page="AdminNavLogOut.jsp" /> 
     
     <h2><b>Admin Page</b></h2>
     <div class="container">

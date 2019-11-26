@@ -24,73 +24,56 @@
  <div class="column">
 <form action="addClass.do" method="post">
 		
-				<label for="classType">Enter details for First Class :</td>
-				<td><input type="hidden" name="classTypeFC" value="FC"></td><br>
+				<label for="classType">Enter details for First Class :</label>
+				<input type="hidden" name="classTypeFC" value="FC">
+				<br><br>
 			
-			    Base Fare For First Class:
+			    <label for="BaseFareFirst">Base Fare For First Class:</label>
 				<input type="number" name="baseFareFC">
 			
-			    Maximum Seats For First Class:
+			     <label for="MaxSeatsinFirst">Maximum Seats For First Class:</label>
 				 <input type="number"  name="maxseatsFC" min="1" max="2">
 				
 			
-			    Available Seats For First Class:
+			    <label for="AvlSeatsinFirst">Available Seats For First Class:</label>
 				<input type="number" name="availseatsFC" min="1" max="2">
 				
 			
+				<label for="classType">Enter details for Buisness Class :</label>
+				<input type="hidden" name="classTypeBC" value="BC">
+				<br><br>
 			
-			
-				<label for="classType">Enter details for Buisness Class :</td>
-				<td><input type="hidden" name="classTypeBC" value="BC"></td><br>
-			</tr>
-	
-	        
-			
-			<tr>
-			    <td>Base Fare For Buisness Class:
-				<td><input type="number" name="baseFareBC"></td>
+			    <label for="BaseFareBusiness">Base Fare For Buisness Class:</label>
+				<input type="number" name="baseFareBC">
 				
-			</tr>
 			
-			<tr>
-			    <td>Maximum Seats For Buisness Class:
-				<td> <input type="number"  name="maxseatsBC" min="1" max="5"></td>
+			    <label for="MaxSeatsinBusiness">Maximum Seats For Buisness Class:</label>
+				<input type="number"  name="maxseatsBC" min="1" max="5">
 				
-			</tr>
-			<tr>
-			    <td>Available Seats For Buisness Class:
-				<td><input type="number" name="availseatsBC" min="1" max="5"></td>
-				
-			</tr>  
 			
+			    <label  for="AvlSeatsinBusiness">Available Seats For Buisness Class:</label>
+				<input type="number" name="availseatsBC" min="1" max="5">
 				
-			<tr>
-				<td> <label for="classType">Enter details for Economy Class :</td>
-				<td><input type="hidden" name="classTypeEC" value="EC"></td><br>
-			</tr>
-	
-	        
 			
-			<tr>
-			    <td>Base Fare For Economy Class:
-				<td><input type="number" name="baseFareEC"></td>
-				
-			</tr>
+				 <label for="classType">Enter details for Economy Class :</label>
+				<input type="hidden" name="classTypeEC" value="EC">
+				<br>
+				<br>
 			
-			<tr>
-			    <td>Maximum Seats For Economy Class:
-				<td> <input type="number"  name="maxseatsEC" min="1" max="5"></td>
+		
+			    <label for="BaseFareEco"> Base Fare For Economy Class:</label>
+				<input type="number" name="baseFareEC">
 				
-			</tr>
-			<tr>
-			    <td>Available Seats For Economy Class:
+			
+			    <label for="MaxSeatsinEconomy"> Maximum Seats For Economy Class:</label>
+				 <input type="number"  name="maxseatsEC" min="1" max="5">
+				
+			
+			    <label  for="AvlSeatsinEconomy">Available Seats For Economy Class:</label>
 				<td><input type="number" name="availseatsEC" min="1" max="5"></td>
 				
-			</tr>  
-			<tr>
-				<td><input type="submit" value="Add CLass"></td>
-			</tr>
-		</table>
+		<input type="submit" value="Add CLass">
+
 	</form>
 	</div>
 	 <jsp:include page="footer.jsp" /> 

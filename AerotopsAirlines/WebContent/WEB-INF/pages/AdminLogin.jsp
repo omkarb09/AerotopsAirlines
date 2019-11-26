@@ -19,7 +19,7 @@
 </style>
 </head>
 <body>
- <jsp:include page="NavBar.jsp" />
+ <jsp:include page="AdminNav.jsp" />
     
       
     <div class="container">
@@ -29,7 +29,7 @@
             <div class="form-group">
               <label class="control-label col-sm-3" for="uname">Username:</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter Username">
+                <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter Username" required>
                 
               </div>
             </div>
@@ -37,7 +37,7 @@
             <div class="form-group">
               <label class="control-label col-sm-3" for="pwd">Password:</label>
               <div class="col-sm-7">
-                <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
+                <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password" required>
               </div>   
             </div>
 

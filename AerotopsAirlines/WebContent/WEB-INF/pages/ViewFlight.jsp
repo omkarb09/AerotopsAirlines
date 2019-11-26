@@ -12,7 +12,7 @@
 </style>
  </head>
 <body>
-<jsp:include page="NavBar.jsp" />
+<jsp:include page="AdminNavLogOut.jsp" />
   <div class="container">
                     <div style="text-align:center">
                         <h2>View Flight</h2>
