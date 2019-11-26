@@ -17,8 +17,10 @@ import com.aerotops.model.DynamicDays;
 import com.aerotops.model.DynamicSeats;
 import com.aerotops.model.Flight;
 import com.aerotops.model.FlightClass;
+import com.aerotops.model.Passenger;
 import com.aerotops.model.Seat;
 import com.aerotops.model.Ticket;
+import com.aerotops.model.Transaction;
 import com.aerotops.model.User;
 
 @Repository
@@ -32,6 +34,15 @@ public class AerotopsDaoImpl implements AerotopsDao
 		entityManager.clear();
 		System.out.println(user);
 		entityManager.merge(user);
+		
+		return 1;
+	}
+	
+	@Override
+	public int createTransaction(Transaction transaction) {
+		entityManager.clear();
+		System.out.println(transaction);
+		entityManager.merge(transaction);
 		
 		return 1;
 	}
@@ -98,7 +109,6 @@ public class AerotopsDaoImpl implements AerotopsDao
 	}
 
 	@Override
-	@Transactional
 	public int createTicket(Ticket ticket) 
 	{
 		entityManager.clear();
@@ -145,7 +155,6 @@ public class AerotopsDaoImpl implements AerotopsDao
 			String jpql= "select a from Admin a where a.username=:unm AND a.password=:pass";
 			TypedQuery<Admin> tquery=entityManager.createQuery(jpql, Admin.class);
 			
-			Query query = entityManager.createQuery(jpql);
 			tquery.setParameter("unm", username);
 			tquery.setParameter("pass",password);
 			List<Admin> list=tquery.getResultList();
@@ -270,6 +279,17 @@ public class AerotopsDaoImpl implements AerotopsDao
 			FlightClass fclass= tquery.getSingleResult();
 			return fclass.getMaxseats();
 		}
+
+		@Override
+		public int createPassenger(Passenger passenger) {
+			entityManager.clear();
+			System.out.println(passenger);
+			entityManager.merge(passenger);
+			
+			return 1;
+		}
+
+		
 
 		
 

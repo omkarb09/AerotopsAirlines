@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -26,19 +27,19 @@ public class Ticket implements Serializable
 	@Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
 	@Column(name="pnr_no")
-	private long pnrNo;
+	private int pnrNo;
 	@Column(name="total_fare")
-	private long totalFare;
+	private double totalFare;
 	@Column(name="ticket_status")
 	private String ticketStatus;
 	@Column(name="user_id")
-	private long userId;
+	private int userId;
 	@Column(name="flight_id")
-	private long flightId;
-	@Column(name="seat_id")
-	private long seatId;
-	@Column(name="class_id")
-	private long classId;
+	private int flightId;
+	@Column(name="seat_name")
+	private String seatName;
+	@Column(name="class_type")
+	private String classType;
 	
 	/*@Column(name="booking_id")
 	private long bookingId;*/
@@ -47,23 +48,69 @@ public class Ticket implements Serializable
 	@JoinColumn(name="booking_id")
 	private Booking booking;
 	
+	@OneToOne(mappedBy="ticket")
+	private Passenger passenger;
+	
 	public Ticket() {
 		super();
 	}
-	
-	public Ticket(long pnrNo, long totalFare, String ticketStatus, long userId, long flightId, long seatId,
-			long classId, long bookingId) {
-		super();
-		this.pnrNo = pnrNo;
-		this.totalFare = totalFare;
-		this.ticketStatus = ticketStatus;
-		this.userId = userId;
-		this.flightId = flightId;
-		this.seatId = seatId;
-		this.classId = classId;
-		
+
+	public int getPnrNo() {
+		return pnrNo;
 	}
-	
+
+	public void setPnrNo(int pnrNo) {
+		this.pnrNo = pnrNo;
+	}
+
+	public double getTotalFare() {
+		return totalFare;
+	}
+
+	public void setTotalFare(double totalFare) {
+		this.totalFare = totalFare;
+	}
+
+	public String getTicketStatus() {
+		return ticketStatus;
+	}
+
+	public void setTicketStatus(String ticketStatus) {
+		this.ticketStatus = ticketStatus;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public int getFlightId() {
+		return flightId;
+	}
+
+	public void setFlightId(int flightId) {
+		this.flightId = flightId;
+	}
+
+	public String getSeatName() {
+		return seatName;
+	}
+
+	public void setSeatName(String seatName) {
+		this.seatName = seatName;
+	}
+
+	public String getClassType() {
+		return classType;
+	}
+
+	public void setClassType(String classType) {
+		this.classType = classType;
+	}
+
 	public Booking getBooking() {
 		return booking;
 	}
@@ -72,55 +119,24 @@ public class Ticket implements Serializable
 		this.booking = booking;
 	}
 
-	public long getPnrNo() {
-		return pnrNo;
+	public Passenger getPassenger() {
+		return passenger;
 	}
-	public void setPnrNo(long pnrNo) {
-		this.pnrNo = pnrNo;
+
+	public void setPassenger(Passenger passenger) {
+		this.passenger = passenger;
 	}
-	public long getTotalFare() {
-		return totalFare;
-	}
-	public void setTotalFare(long totalFare) {
-		this.totalFare = totalFare;
-	}
-	public String getTicketStatus() {
-		return ticketStatus;
-	}
-	public void setTicketStatus(String ticketStatus) {
-		this.ticketStatus = ticketStatus;
-	}
-	public long getUserId() {
-		return userId;
-	}
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
-	public long getFlightId() {
-		return flightId;
-	}
-	public void setFlightId(long flightId) {
-		this.flightId = flightId;
-	}
-	public long getSeatId() {
-		return seatId;
-	}
-	public void setSeatId(long seatId) {
-		this.seatId = seatId;
-	}
-	public long getClassId() {
-		return classId;
-	}
-	public void setClassId(long classId) {
-		this.classId = classId;
-	}
-	
 
 	@Override
 	public String toString() {
 		return "Ticket [pnrNo=" + pnrNo + ", totalFare=" + totalFare + ", ticketStatus=" + ticketStatus + ", userId="
-				+ userId + ", flightId=" + flightId + ", seatId=" + seatId + ", classId=" + classId + "]";
+				+ userId + ", flightId=" + flightId + ", seatName=" + seatName + ", classType=" + classType
+				+ ", booking=" + booking + ", passenger=" + passenger + "]";
 	}
+
+	
+	
+	
 	
 	
 	

@@ -13,8 +13,10 @@ import com.aerotops.model.DynamicDays;
 import com.aerotops.model.DynamicSeats;
 import com.aerotops.model.Flight;
 import com.aerotops.model.FlightClass;
+import com.aerotops.model.Passenger;
 import com.aerotops.model.Seat;
 import com.aerotops.model.Ticket;
+import com.aerotops.model.Transaction;
 import com.aerotops.model.User;
 
 @Service("service")
@@ -43,7 +45,21 @@ public class AerotopsServiceImpl implements AerotopsService
 			return false;
 		}
 	}
-
+	
+	@Override
+	@Transactional
+	public boolean addTransaction(Transaction transaction) {
+		int result=getDao().createTransaction(transaction);
+		if(result==1)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+	
 	@Override
 	public List<User> findAllUsers() {
 		
@@ -249,6 +265,22 @@ public class AerotopsServiceImpl implements AerotopsService
 		int maxSeats=getDao().readMaximumSeats(flightId, classId);
 		return maxSeats;
 	}
+
+	@Override
+	@Transactional
+	public boolean addPassenger(Passenger passenger) {
+		int result=getDao().createPassenger(passenger);
+		if(result==1)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+
+	
 
 	
 	

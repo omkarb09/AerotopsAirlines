@@ -14,7 +14,7 @@
 <title>Contact Us</title>
 </head>
 <body>
-	 <jsp:include page="NavBar.jsp" /> 
+	 <jsp:include page="NavBarWithUserLogout.jsp" /> 
 
             <div class="container">
                 <div style="text-align:center">

@@ -2,6 +2,7 @@ package com.aerotops.controller;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.aerotops.model.Booking;
 import com.aerotops.model.DynamicSeats;
@@ -119,6 +122,45 @@ public class AeroTopsFareController {
 		session.setAttribute("cId", cId);
 		return "SeatSelection";
 	}
+	
+	@RequestMapping(path="selectedSeats.do",method=RequestMethod.GET)
+	public String seatSelectionPage(@RequestParam(value="1",required=false)String pass1 ,
+			@RequestParam(value="2",required=false)String pass2,
+			@RequestParam(value="3",required=false)String pass3,
+			@RequestParam(value="4",required=false)String pass4,
+			@RequestParam(value="5",required=false)String pass5,
+			@RequestParam(value="6",required=false)String pass6
+			,@RequestParam(value="7",required=false)String pass7,
+			@RequestParam(value="8",required=false)String pass8,
+			@RequestParam(value="9",required=false)String pass9)
+	{
+		List<String> selSeats = new ArrayList<>();
+		if(pass1!=null)
+		selSeats.add(pass1);
+		if(pass2!=null)
+		selSeats.add(pass2);
+		if(pass3!=null)
+		selSeats.add(pass3);
+		if(pass4!=null)
+		selSeats.add(pass4);
+		if(pass5!=null)
+		selSeats.add(pass5);
+		if(pass6!=null)
+		selSeats.add(pass6);
+		if(pass7!=null)
+		selSeats.add(pass7);
+		if(pass8!=null)
+		selSeats.add(pass8);
+		if(pass9!=null)
+		selSeats.add(pass9);
+		
+		session.setAttribute("selSeats", selSeats);
+		
+		System.out.println(selSeats);
+		return "Passenger";
+	}
+	
+	
 	
 	/*@RequestMapping(path="seatSelection")
 	public String seatSelection()

@@ -63,7 +63,7 @@ public class AeroTopsBookingController {
 		session.setAttribute("classType", classType);
 		
 		//calling service method
-		boolean result=service.addBooking(booking);
+		/*boolean result=service.addBooking(booking);
 		if(result)
 		{
 			return "redirect:checkTickets.do";
@@ -72,7 +72,8 @@ public class AeroTopsBookingController {
 		else
 		{
 			return "Error";
-		}
+		}*/
+		return "redirect:checkTickets.do";
 		
 	}
 	

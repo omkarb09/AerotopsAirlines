@@ -8,8 +8,10 @@ import com.aerotops.model.DynamicDays;
 import com.aerotops.model.DynamicSeats;
 import com.aerotops.model.Flight;
 import com.aerotops.model.FlightClass;
+import com.aerotops.model.Passenger;
 import com.aerotops.model.Seat;
 import com.aerotops.model.Ticket;
+import com.aerotops.model.Transaction;
 import com.aerotops.model.User;
 
 
@@ -17,6 +19,8 @@ public interface AerotopsDao {
 	public int createUser(User user);
 	public int createBooking(Booking booking);
 	public int createTicket(Ticket ticket);
+	public int createTransaction(Transaction transaction);
+	public int createPassenger(Passenger passenger);
 	
 	public User readUser(String email);
 	public double readFare(int flightId ,String classType);

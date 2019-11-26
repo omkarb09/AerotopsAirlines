@@ -8,14 +8,18 @@ import com.aerotops.model.DynamicDays;
 import com.aerotops.model.DynamicSeats;
 import com.aerotops.model.Flight;
 import com.aerotops.model.FlightClass;
+import com.aerotops.model.Passenger;
 import com.aerotops.model.Seat;
 import com.aerotops.model.Ticket;
+import com.aerotops.model.Transaction;
 import com.aerotops.model.User;
 
 public interface AerotopsService {
 	public boolean addUser(User user);
 	public boolean addBooking(Booking booking);
 	public boolean addTicket(Ticket ticket);
+	public boolean addTransaction(Transaction transaction);
+	public boolean addPassenger(Passenger passenger);
 	
 	public User findUser(String email);
 	public double findFare(int flightId ,String classType);

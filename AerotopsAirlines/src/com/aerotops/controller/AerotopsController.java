@@ -61,6 +61,10 @@ public class AerotopsController {
 	}
 	
 	
+	@RequestMapping(path="userPage")
+	public String userPg(){
+		return "SuccessfulUserLogin";
+	}
 	
 	@RequestMapping(path="AboutUsPage")
 	public String aboutUs(){
