@@ -36,6 +36,29 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 		<property name="entityManagerFactory" ref="emf"/>
 	</bean>
 	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com"/>
+        <property name="port" value="587" />
+        <property name="username" value="srushtimagar1098@gmail.com"/>
+        <property name="password" value="SrushtiMagar@79133"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+                <prop key="mail.smtp.connecttimeout">50000</prop>
+                <prop key="mail.smtp.timeout">30000</prop>
+                <prop key="mail.smtp.writetimeout">50000</prop>
+            </props>
+        </property>
+</bean>
+    
+    <bean id="preConfiguredMessage" class="org.springframework.mail.SimpleMailMessage">
+        <property name="from" value="srushtimagar1098@gmail.com"></property>
+    </bean>
+	
+	
 	<mvc:resources mapping="/**" location="/" cache-period="31556926"/>
     
 	<tx:annotation-driven transaction-manager="transactionManager"/>

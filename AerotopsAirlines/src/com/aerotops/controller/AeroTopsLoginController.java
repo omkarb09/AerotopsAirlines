@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +18,7 @@ import com.aerotops.service.AerotopsService;
 
 @Controller
 public class AeroTopsLoginController {
-	//
+
 	@Autowired
 	HttpSession session;
 	
@@ -28,6 +30,12 @@ public class AeroTopsLoginController {
 	
 	@Autowired
 	private AerotopsService service;
+	
+	@Autowired
+	private MailSender mailSender;
+	
+	@Autowired
+	private SimpleMailMessage message;
 	
 	@RequestMapping(path="loginSignUpPage")
 	public String loginSignUp(){
@@ -62,6 +70,32 @@ public class AeroTopsLoginController {
 			return "error";
 		}
 	}
+	
+	@RequestMapping(path="forgotPassword.do", method=RequestMethod.POST)
+	public String forgotPassword(@RequestParam("emailId") String userId){
+		
+
+			System.out.println("hello");
+			user=service.findUser(userId);
+			String pass=user.getPassword();
+			System.out.println(pass);
+			message.setTo(userId); //set a proper recipient of the mail
+			message.setSubject("Request for a new password");
+			message.setText("Hello, your password is "+pass+".");
+			mailSender.send(message);
+			return "ForgotPasswordSuccess";
+		
+		}
+		
+		
+	
+	
+	@RequestMapping(path="forgotPasswordPage",method=RequestMethod.GET)
+	public String forgotPasswordPage()
+	{
+		return "ForgotPassword";
+	}
+	
 	@ExceptionHandler({Exception.class})
 	public String handleException()
 	{
