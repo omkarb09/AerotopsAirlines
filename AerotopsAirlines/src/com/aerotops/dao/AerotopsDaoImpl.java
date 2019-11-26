@@ -15,6 +15,7 @@ import com.aerotops.model.Airports;
 import com.aerotops.model.Booking;
 import com.aerotops.model.Flight;
 import com.aerotops.model.FlightClass;
+import com.aerotops.model.Seat;
 import com.aerotops.model.Ticket;
 import com.aerotops.model.User;
 
@@ -203,4 +204,26 @@ public class AerotopsDaoImpl implements AerotopsDao
 				return list.get(0);
 
 			}
+		
+		@Override
+		public int readClassId(int flightId, String classType) {
+			String jpql = "select v from FlightClass v Inner Join v.flight a where a.flightId=:id AND v.classType=:classT";
+			TypedQuery<FlightClass> tquery = entityManager.createQuery(jpql, FlightClass.class);
+			tquery.setParameter("id", flightId);
+			tquery.setParameter("classT", classType);
+			FlightClass fclass= tquery.getSingleResult();
+			return fclass.getClassId();
+		}
+
+		@Override
+		public List<Seat> readAllSeats(int flightId, int classId) {
+			String jpql = "select v from Seat v where v.flightId=:fid AND v.classId=:cid AND v.seatStatus=:status";
+			TypedQuery<Seat> tquery = entityManager.createQuery(jpql, Seat.class);
+			tquery.setParameter("fid", flightId);
+			tquery.setParameter("cid", classId);
+			tquery.setParameter("status", "A");
+			List<Seat> list = tquery.getResultList();
+			return list;
+		}
+
 }

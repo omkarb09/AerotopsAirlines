@@ -6,6 +6,7 @@ import com.aerotops.model.Airports;
 import com.aerotops.model.Booking;
 import com.aerotops.model.Flight;
 import com.aerotops.model.FlightClass;
+import com.aerotops.model.Seat;
 import com.aerotops.model.Ticket;
 import com.aerotops.model.User;
 
@@ -17,6 +18,8 @@ public interface AerotopsDao {
 	
 	public User readUser(String email);
 	public double readFare(int flightId ,String classType);
+	public int readClassId(int flightId ,String classType);
+	public List<Seat> readAllSeats(int flightId ,int classId);
 	public List<User> readAllUsers();
 	
 	public int readAvailableTickets(int flightId, int noOfTickets ,String classType);
