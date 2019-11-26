@@ -19,7 +19,7 @@
 <body>
         <jsp:include page="NavBar.jsp" /> 
     
-    <h2>Welcome To AeroTops Airlines !!!</h2>
+    <h2><b>Admin Page</b></h2>
     <div class="container">
               <div style="float: left">
     <button class="btn1"><a href="addFlightPage">Add Flight</a></button></div>

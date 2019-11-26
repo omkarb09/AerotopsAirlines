@@ -5,39 +5,42 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>Welcome Admin !!</title>
+<style type="text/css">
+  <%@include file="/resources/css/AddFlight.css" %>
+</style>
 </head>
 <body>
+<jsp:include page="NavBar.jsp" /> 
+
+  <div class="container">
+                    <div style="text-align:center">
+                        <h2>Add Class</h2>
+                </div>
 <h3>Enter Class Details For Flight No. ${sessionScope.flight.flightId} Here :</h3>
+ <div class="column">
 <form action="addClass.do" method="post">
-	<table>
-				<tr>
-				<td> <label for="classType">Enter details for First Class :</td>
+		
+				<label for="classType">Enter details for First Class :</td>
 				<td><input type="hidden" name="classTypeFC" value="FC"></td><br>
-			</tr>
-	
-	        
 			
-			<tr>
-			    <td>Base Fare For First Class:
-				<td><input type="number" name="baseFareFC"></td>
+			    Base Fare For First Class:
+				<input type="number" name="baseFareFC">
+			
+			    Maximum Seats For First Class:
+				 <input type="number"  name="maxseatsFC" min="1" max="2">
 				
-			</tr>
 			
-			<tr>
-			    <td>Maximum Seats For First Class:
-				<td> <input type="number"  name="maxseatsFC" min="1" max="2"></td>
+			    Available Seats For First Class:
+				<input type="number" name="availseatsFC" min="1" max="2">
 				
-			</tr>
-			<tr>
-			    <td>Available Seats For First Class:
-				<td><input type="number" name="availseatsFC" min="1" max="2"></td>
-				
-			</tr>  
 			
 			
-			<tr>
-				<td> <label for="classType">Enter details for Buisness Class :</td>
+			
+				<label for="classType">Enter details for Buisness Class :</td>
 				<td><input type="hidden" name="classTypeBC" value="BC"></td><br>
 			</tr>
 	
@@ -89,6 +92,8 @@
 			</tr>
 		</table>
 	</form>
+	</div>
+	 <jsp:include page="footer.jsp" /> 
 </body>
 </html>
 

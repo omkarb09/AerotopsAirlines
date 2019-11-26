@@ -6,6 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script type="text/javascript">
 	var cities;
@@ -64,8 +67,9 @@
 
 </head>
 <body>
+<jsp:include page="NavBar.jsp" /> 
 	<form action="searchFlight.do" method="POST">
-	<table>
+	<table >
 	<tr><td>Source<td>
 	
 		<td>				
@@ -90,6 +94,6 @@
  <tr><td><input type="submit" value="SEARCH"></td></tr>
 </table>
 </form>
-
+ <jsp:include page="footer.jsp" /> 
 </body>
 </html>

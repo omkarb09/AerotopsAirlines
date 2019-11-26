@@ -10,9 +10,65 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>Add Flight</title>
+   <script type="text/javascript">
+	var cities;
+
+	$(document).ready(function getCities()
+	{
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET','http://localhost:9000/AerotopsAirlines/data',true);
+		xhr.responseType='text';
+		xhr.send();
+		xhr.onload=function()
+		{
+			if(xhr.status==200)
+			{
+				cities= JSON.parse(xhr.responseText);
+				var output=[], len= cities.length, i;
+				
+				for(i=0;i<len;i++)
+				{
+					output.push(cities[i].city);	
+				}
+				console.log(output);
+				
+				var fromDropDown = document.getElementById("from");
+				var toDropDown = document.getElementById("to");
+				for(var j=0;j<output.length;j++)
+				{
+					var option = document.createElement("option");
+					option.text=output[j];
+					option.value=output[j];
+					fromDropDown.add(option);
+				}
+				
+				for(var j=0;j<output.length;j++)
+				{
+					var option = document.createElement("option");
+					option.text=output[j];
+					option.value=output[j];
+					toDropDown.add(option);
+				}
+			}
+		}
+			
+	});
+	
+	
+
+		function removeSame()
+			{
+				if(document.getElementById('from').value==document.getElementById('to').value) 
+				{
+			    	window.alert("source and destination canot be same");
+				}
+			
+			}
+	</script>
     <style type="text/css">
   <%@include file="/resources/css/AddFlight.css" %>
 </style>
+
  
  
 </head>
@@ -25,18 +81,17 @@
                 <div class="column">
                         <form action="addFlight.do" method="post">
 
-                                <label for="flightId">Flight Id</label>
-                                <input type="text" name="flightId" required>
+                             
 
                                 <label for="source">From</label>
-                                <select name="from">
+                                <select name="from" id="from" >
                                         <option value="Mumbai">Mumbai</option>
                                         <option value="Pune">Pune</option>
                                         <option value="Jaipur">Jaipur</option>
                                         <option value="Udaipur">Udaipur</option>
                                   </select>
                                   <label for="destination">To</label>
-                                  <select name="to">
+                                  <select name="to" id="to" onchange="removeSame()">
                                         <option value="Mumbai">Mumbai</option>
                                     <option value="Pune">Pune</option>
                                         <option value="Jaipur">Jaipur</option>
@@ -60,25 +115,8 @@
                                         <option value="Cancelled">Cancelled</option>
                                     </select>
                                   
-                                    <label for="classType">Enter details for First Class :</label>
-                                    <input type="hidden" name="classType" value="FC">
-                                    <br>
-                                    <br>
-                                   
-                                    <label for="classId">Class Id :</label>
-                                    <input type="text" name="classId">
-
-                                    <label for="BaseFareforFirstclass">Base Fare For First Class:</label>
-                                    <input type="number" name="baseFare">
-
-
-                                    <label for="MaxSeatsforFirstclass">Maximum Seats For First Class:</label>
-                                    <input type="number"  name="maxSeats" min="1" max="2">
-
-                                    <label for="AvlSeatsforFirstclass">Available Seats For First Class::</label>
-                                    <input type="number" name="availSeats" min="1" max="2">
-                                    <br>
-                                    <br>
+                                <br>
+                                <br>
                                     <input type="submit" value="Add Flight">
 
                                   </form>

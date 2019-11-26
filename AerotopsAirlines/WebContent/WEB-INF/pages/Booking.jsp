@@ -25,7 +25,15 @@
 		   document.getElementById('totalTickets').value=total;
 		 }
 		
-		
+
+		function removeSame()
+		{
+			if(document.getElementById('sel1').value==document.getElementById('sel2').value) 
+			{
+			    window.alert("source and destination canot be same");
+			}
+			
+		}
 		
 	</script>
 	
@@ -59,7 +67,7 @@
                     <div class="form-group">
                             <label class="control-label col-sm-5" for="sel1 ">TO:</label>
                             <div class="col-sm-6">
-                            <select class="form-control  " id="sel2" name="arrivalTo">
+                            <select class="form-control  " id="sel2" name="arrivalTo" onclick="removeSame()">
                               <option value="Mumbai">Mumbai</option>
                               <option value="Delhi">Delhi</option>
                               <option value="Chennai">Chennai</option>
