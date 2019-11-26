@@ -16,6 +16,7 @@
 </style>
 
 <body>
+<!-- cancel flight page -->
        <jsp:include page="AdminNavLogOut.jsp" /> 
               <div class="container">
                     <div style="text-align:center">
@@ -32,8 +33,7 @@
                             
                         </form>
                         </div>
-                        
-                        </div>
+                       </div>
                      
                                  <jsp:include page="footer.jsp" />    
                             
