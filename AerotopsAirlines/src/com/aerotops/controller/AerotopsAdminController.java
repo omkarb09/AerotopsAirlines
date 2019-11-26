@@ -41,6 +41,7 @@ public class AerotopsAdminController {
 		return "AdminLogin";
 	}
 	
+	//
 	@RequestMapping(path="validateLogin", method=RequestMethod.GET)
 	public String validateLogin(@RequestParam("uname") String username, @RequestParam("pwd") String password,HttpServletRequest request)
 		{
