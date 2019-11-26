@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.aerotops.model.Airports;
 import com.aerotops.model.Booking;
+import com.aerotops.model.DynamicDays;
+import com.aerotops.model.DynamicSeats;
 import com.aerotops.model.Flight;
 import com.aerotops.model.FlightClass;
 import com.aerotops.model.Seat;
@@ -26,6 +28,12 @@ public interface AerotopsService {
 	public List<Flight> findAllFlights(String from, String to);
 	
 	public List<Airports> findAllAirports();
+	
+	public List<DynamicDays> findDynamicDay(String codeDays);
+	public List<DynamicSeats> findDynamicSeat(String codeSeats);
+    public int findAvailableSeats(int flightId, int classId);
+    public int findMaximumSeats(int flightId, int classId);
+    
 	
 	
 	public boolean checkLogin(String username,String password);

@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aerotops.model.Admin;
 import com.aerotops.model.Airports;
 import com.aerotops.model.Booking;
+import com.aerotops.model.DynamicDays;
+import com.aerotops.model.DynamicSeats;
 import com.aerotops.model.Flight;
 import com.aerotops.model.FlightClass;
 import com.aerotops.model.Seat;
@@ -225,5 +227,50 @@ public class AerotopsDaoImpl implements AerotopsDao
 			List<Seat> list = tquery.getResultList();
 			return list;
 		}
+
+		@Override
+		public List<DynamicSeats> readDynamicSeat(String codeSeats) {
+			String jpql= "select d from DynamicSeats d where d.codeSeats=:codeSeats";	
+			TypedQuery<DynamicSeats> tquery=entityManager.createQuery(jpql, DynamicSeats.class);
+			tquery.setParameter("codeSeats", codeSeats);
+			
+			List<DynamicSeats> list=tquery.getResultList();
+			
+			return list;
+			
+		}
+
+		@Override
+		public List<DynamicDays> readDynamicDay(String codeDays) {
+			String jpql= "select d from DynamicDays d where d.codeDays=:codeDays";	
+			TypedQuery<DynamicDays> tquery=entityManager.createQuery(jpql, DynamicDays.class);
+			tquery.setParameter("codeDays", codeDays);
+			
+			List<DynamicDays> list=tquery.getResultList();
+			
+			return list;
+		}
+
+		@Override
+		public int readAvailableSeats(int flightId, int classId) {
+			String jpql = "select v from FlightClass v Inner Join v.flight a where a.flightId=:id AND v.classId=:classId";
+			TypedQuery<FlightClass> tquery = entityManager.createQuery(jpql, FlightClass.class);
+			tquery.setParameter("id", flightId);
+			tquery.setParameter("classId", classId);
+			FlightClass fclass= tquery.getSingleResult();
+			return fclass.getAvailseats();
+		}
+
+		@Override
+		public int readMaximumSeats(int flightId, int classId) {
+			String jpql = "select v from FlightClass v Inner Join v.flight a where a.flightId=:id AND v.classId=:classId";
+			TypedQuery<FlightClass> tquery = entityManager.createQuery(jpql, FlightClass.class);
+			tquery.setParameter("id", flightId);
+			tquery.setParameter("classId", classId);
+			FlightClass fclass= tquery.getSingleResult();
+			return fclass.getMaxseats();
+		}
+
+		
 
 }
