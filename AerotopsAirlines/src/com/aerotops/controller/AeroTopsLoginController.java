@@ -75,7 +75,7 @@ public class AeroTopsLoginController {
 	public String forgotPassword(@RequestParam("emailId") String userId){
 		
 
-			System.out.println("hello");
+			
 			user=service.findUser(userId);
 			String pass=user.getPassword();
 			System.out.println(pass);
