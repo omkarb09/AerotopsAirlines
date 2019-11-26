@@ -18,7 +18,7 @@ public class AeroTopsSeatSelectionController {
 	
 	@Autowired
 	HttpSession session;
-	
+	//Seat Selection done
 	@RequestMapping(path="seatSelectionPage")
 	public String seatSelectionPage()
 	{
