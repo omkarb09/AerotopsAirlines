@@ -24,6 +24,9 @@
 		   
 		   document.getElementById('totalTickets').value=total;
 		 }
+		
+		
+		
 	</script>
 	
     <style type="text/css">
@@ -56,7 +59,7 @@
                     <div class="form-group">
                             <label class="control-label col-sm-5" for="sel1 ">TO:</label>
                             <div class="col-sm-6">
-                            <select class="form-control  " id="sel1" name="arrivalTo">
+                            <select class="form-control  " id="sel2" name="arrivalTo">
                               <option value="Mumbai">Mumbai</option>
                               <option value="Delhi">Delhi</option>
                               <option value="Chennai">Chennai</option>

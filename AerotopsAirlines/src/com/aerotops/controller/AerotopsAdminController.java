@@ -55,7 +55,7 @@ public class AerotopsAdminController {
 			return "AdminHome";
 		}
 		else{
-			return "error";
+			return "Error";
 		}
 
 	}
