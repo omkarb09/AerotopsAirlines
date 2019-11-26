@@ -9,12 +9,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.aerotops.model.Booking;
+import com.aerotops.model.Flight;
 import com.aerotops.service.AerotopsService;
 
 @Controller
 public class AeroTopsFareController {
 	@Autowired
 	private Booking booking;
+	
+	@Autowired
+	private Flight flight;
 	
 	@Autowired
 	private AerotopsService service;
@@ -34,5 +38,20 @@ public class AeroTopsFareController {
 		session.setAttribute("fare", fare);
 
 		return "TicketsAvailable";
+	}
+	
+	@RequestMapping(path="getSeats.do")
+	public String getSeats()
+	{
+		booking=(Booking) session.getAttribute("booking");
+		flight=service.findFlight(booking.getFlightId());
+		
+		return null;
+	}
+	
+	@RequestMapping(path="seatSelection")
+	public String seatSelection()
+	{
+		return "SeatSelection";
 	}
 }

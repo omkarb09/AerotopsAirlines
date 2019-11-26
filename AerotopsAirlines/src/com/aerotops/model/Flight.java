@@ -8,8 +8,11 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,9 +26,11 @@ import org.springframework.stereotype.Component;
 @Scope(scopeName="prototype")
 @Entity
 @Table(name="flight")
+@SequenceGenerator(name="seq",sequenceName="flightid_seq", initialValue=4000, allocationSize=1)
 public class Flight implements Serializable{
 //inverse entity
 	@Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
 	@Column(name="flight_id")
 	private int flightId;
 	
@@ -56,9 +61,9 @@ public class Flight implements Serializable{
 	@Column(name="flight_status")
 	private String flightStatus;
 	
-/*	@OneToMany(mappedBy="flight", cascade=CascadeType.ALL)
-	private Set<FlightClass> flightclass = new HashSet<>();*/
-	
+	@OneToMany(mappedBy="flight", cascade=CascadeType.ALL)
+	private Set<FlightClass> flightclass = new HashSet<>();
+
 
 	public Flight() {
 		super();
@@ -159,22 +164,25 @@ public class Flight implements Serializable{
 	}
 
 
+	
+
+
 	@Override
 	public String toString() {
 		return "Flight [flightId=" + flightId + ", from=" + from + ", to=" + to + ", departureTime=" + departureTime
 				+ ", arrivalTime=" + arrivalTime + ", dateOfDeparture=" + dateOfDeparture + ", dateOfArrival="
-				+ dateOfArrival + ", flightStatus=" + flightStatus + "]";
+				+ dateOfArrival + ", flightStatus=" + flightStatus + ", flightclass=" + flightclass + "]";
 	}
 
 
-	/*public Set<FlightClass> getFlightclass() {
+	public Set<FlightClass> getFlightclass() {
 		return flightclass;
 	}
 
 
 	public void setFlightclass(Set<FlightClass> flightclass) {
 		this.flightclass = flightclass;
-	}*/
+	}
 	
 	
 

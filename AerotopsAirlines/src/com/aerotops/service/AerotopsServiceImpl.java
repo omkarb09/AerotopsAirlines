@@ -10,6 +10,7 @@ import com.aerotops.dao.AerotopsDao;
 import com.aerotops.model.Airports;
 import com.aerotops.model.Booking;
 import com.aerotops.model.Flight;
+import com.aerotops.model.FlightClass;
 import com.aerotops.model.Ticket;
 import com.aerotops.model.User;
 
@@ -21,6 +22,10 @@ public class AerotopsServiceImpl implements AerotopsService
 	
 	@Autowired
 	private User user;
+	
+	
+	@Autowired
+	private Flight flight;
 	
 	@Override
 	@Transactional
@@ -131,6 +136,80 @@ public class AerotopsServiceImpl implements AerotopsService
 		return fare;
 	}
 
+
+	@Override
+	public boolean checkLogin(String username, String password) 
+	{
+		int result=dao.readLogin(username, password);
+		if(result == 1){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
+	
+	
+	@Override
+	@Transactional
+    public boolean addFlight(Flight flight) {
+		int result = getDao().createFlight(flight);
+		if(result==1)
+		{
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+	
+	@Override
+	@Transactional
+	public boolean addClass(FlightClass flightclass) {
+		int result = getDao().createClass(flightclass);
+		if(result==1)
+		{
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+	
+	
+	@Override
+	public List<Flight> findAllFlights() {
+		List<Flight> list = getDao().readAllFlights();
+		return list;
+	}
+	
+	
+	@Override
+	@Transactional
+	public boolean cancelFlight(int flightId) {
+		int result= getDao().deleteFLight(flightId);
+		if(result==1)
+		{
+			return true;
+		}
+		else{
+			return false;
+
+		}
+	}
+	@Override
+	public List<FlightClass> findAllCLass() {
+		List<FlightClass> list = getDao().readAllClass();
+		return list;
+	}
+	@Override
+	public Flight findFlight(int flightID) {
+		flight	=getDao().readFlight(flightID);
+			return flight;
+	
+	}
 	
 	
 

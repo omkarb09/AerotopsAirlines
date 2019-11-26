@@ -1,10 +1,15 @@
 package com.aerotops.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.springframework.context.annotation.Scope;
@@ -14,9 +19,12 @@ import org.springframework.stereotype.Component;
 @Scope(scopeName="prototype")
 @Entity
 @Table(name="class")
-public class FlightClass {
+@SequenceGenerator(name="seq",sequenceName="classid_seq", initialValue=1, allocationSize=1)
+public class  FlightClass implements Serializable {
+     //owner entity
 	@Id
 	@Column(name="class_id")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
 	private int classId;
 	
 	@Column(name="class_type")
@@ -26,29 +34,17 @@ public class FlightClass {
 	private double baseFare;
 	
 	@Column(name="max_seats")
-	private int maxSeats;
+	private int maxseats;
 	
 	@Column(name="available_seats")
-	private int availabeSeats;
+	private int availseats;
 	
-	@Column(name="flight_id")
-	private int flightId;
-	/*@ManyToOne
-	@JoinColumn(name="flight_id")
-	private Flight flight;*/
+	@ManyToOne
+	@JoinColumn(name="Flight_Id")
+	private Flight flight;
 
 	public FlightClass() {
 		super();
-	}
-
-	public FlightClass(int classId, String classType, double baseFare, int maxSeats, int availabeSeats, int flightId) {
-		super();
-		this.classId = classId;
-		this.classType = classType;
-		this.baseFare = baseFare;
-		this.maxSeats = maxSeats;
-		this.availabeSeats = availabeSeats;
-		this.flightId = flightId;
 	}
 
 	public int getClassId() {
@@ -75,38 +71,47 @@ public class FlightClass {
 		this.baseFare = baseFare;
 	}
 
-	public int getMaxSeats() {
-		return maxSeats;
+	public int getMaxseats() {
+		return maxseats;
 	}
 
-	public void setMaxSeats(int maxSeats) {
-		this.maxSeats = maxSeats;
+	public void setMaxseats(int maxseats) {
+		this.maxseats = maxseats;
 	}
 
-	public int getAvailabeSeats() {
-		return availabeSeats;
+	public int getAvailseats() {
+		return availseats;
 	}
 
-	public void setAvailabeSeats(int availabeSeats) {
-		this.availabeSeats = availabeSeats;
+	public void setAvailseats(int availseats) {
+		this.availseats = availseats;
 	}
 
-	public int getFlightId() {
-		return flightId;
-	}
-
-	public void setFlightId(int flightId) {
-		this.flightId = flightId;
+	public FlightClass(int classId, String classType, double baseFare, int maxseats, int availseats) {
+		super();
+		this.classId = classId;
+		this.classType = classType;
+		this.baseFare = baseFare;
+		this.maxseats = maxseats;
+		this.availseats = availseats;
 	}
 
 	@Override
 	public String toString() {
-		return "FlightClass [classId=" + classId + ", classType=" + classType + ", baseFare=" + baseFare + ", maxSeats="
-				+ maxSeats + ", availabeSeats=" + availabeSeats + ", flightId=" + flightId + "]";
+		return "FlightClass [classId=" + classId + ", classType=" + classType + ", baseFare=" + baseFare + ", maxseats="
+				+ maxseats + ", availseats=" + availseats + "Flight=" + flight + "]";
 	}
-	
+
+	public Flight getFlight() {
+		return flight;
+	}
+
+	public void setFlight(Flight flight) {
+		this.flight = flight;
+	}
 	
 	
 	
 	
 }
+	
