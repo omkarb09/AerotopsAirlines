@@ -20,8 +20,9 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="class")
 @SequenceGenerator(name="seq",sequenceName="classid_seq", initialValue=1, allocationSize=1)
+//FlightCLass (owner entity)
 public class  FlightClass implements Serializable {
-     //owner entity
+ 
 	@Id
 	@Column(name="class_id")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")

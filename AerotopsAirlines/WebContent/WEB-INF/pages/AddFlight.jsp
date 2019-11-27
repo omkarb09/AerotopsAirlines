@@ -1,4 +1,3 @@
-
 <%@ page errorPage="Error.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +16,7 @@
 	$(document).ready(function getCities()
 	{
 		var xhr = new XMLHttpRequest();
-		xhr.open('GET','http://localhost:9000/AerotopsAirlines/data',true);
+		xhr.open('GET','data',true);
 		xhr.responseType='text';
 		xhr.send();
 		xhr.onload=function()

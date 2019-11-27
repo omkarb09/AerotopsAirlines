@@ -26,6 +26,7 @@ import org.springframework.stereotype.Component;
 @Table(name="users")
 @Component
 @SequenceGenerator(name="seq",sequenceName="userid_seq", initialValue=100, allocationSize=1)
+//User Entity
 public class User implements Serializable
 {
 	@Id

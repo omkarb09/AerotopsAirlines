@@ -37,11 +37,13 @@ public class AeroTopsLoginController {
 	@Autowired
 	private SimpleMailMessage message;
 	
+	//User Login Module
 	@RequestMapping(path="loginSignUpPage")
 	public String loginSignUp(){
 		return "UserLogin";
 	}
 	
+	//User Logout Module
 	@RequestMapping(path="logoutUser")
 	public String logoutUser(HttpServletRequest request)
 	{
@@ -71,6 +73,7 @@ public class AeroTopsLoginController {
 		}
 	}
 	
+	//Forgot Password Functionality
 	@RequestMapping(path="forgotPassword.do", method=RequestMethod.POST)
 	public String forgotPassword(@RequestParam("emailId") String userId){
 		

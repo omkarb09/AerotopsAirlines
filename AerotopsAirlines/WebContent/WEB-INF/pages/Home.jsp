@@ -66,8 +66,8 @@
 
 <div class="container">
         <h4 style="text-align: center;font-family:">Welcome to Online Flight Reservation System.
-             This is a simple ticket booking system 
-                ThiOur purpose is to 
+             This is a simple ticket booking system.
+                Our purpose is to 
                 stimulate the basic concepts of airline reservation system. The system enables the customer 
                 to do the things such as search for airline flights for two travel cities on a specified date,
                  choose a flight based on the details, reservation of flight and cancellation of reservation.

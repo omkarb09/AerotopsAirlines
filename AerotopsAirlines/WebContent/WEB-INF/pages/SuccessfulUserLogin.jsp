@@ -14,7 +14,7 @@
 <body>
 
 	<jsp:include page="NavBarWithUserLogout.jsp" /> 
-	<h2>UserLogin successful</h2>
+	<h2>User Page</h2>
 	<h2>Welcome ${sessionScope.email}</h2>
 	
 	<a href="bookingPage">Booking Page</a> | <a href="searchFlight">Search Flight</a>

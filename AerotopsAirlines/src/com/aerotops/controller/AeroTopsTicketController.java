@@ -93,6 +93,7 @@ public class AeroTopsTicketController
 	
 		return "Transaction";
 	}
+	//Transaction functionality
 	@RequestMapping(path="addTransaction.do")
 	public String addTransaction(@RequestParam("userAcc") String userAccount)
 	{
@@ -165,7 +166,7 @@ public class AeroTopsTicketController
 			return "Error";
 		}
 	}
-	
+	//Passenger Details
 	@RequestMapping(path="addPassengerAfterTran.do")
 	public String addPassengerAfterT()
 	{
@@ -187,16 +188,16 @@ public class AeroTopsTicketController
 		
 		if(result)
 		{
-			return "Home";
+			return "BookingConfirmed";
 		}
 		else
 		{
 			return "Error";
 		}
 	}
-	/*@ExceptionHandler({Exception.class})
+	@ExceptionHandler({Exception.class})
 	public String handleException()
 	{
 		return "Error";
-	}*/
+	}
 }

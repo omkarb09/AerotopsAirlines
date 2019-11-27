@@ -8,12 +8,10 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.aerotops.model.Admin;
 import com.aerotops.model.Airports;
 import com.aerotops.model.Booking;
-import com.aerotops.model.DynamicDays;
 import com.aerotops.model.DynamicSeats;
 import com.aerotops.model.Flight;
 import com.aerotops.model.FlightClass;
@@ -52,8 +50,6 @@ public class AerotopsDaoImpl implements AerotopsDao
 		String jpql= "select u from User u where u.email=:email";
 		
 		TypedQuery<User> tquery=entityManager.createQuery(jpql, User.class);
-		
-		//Query query = entityManager.createQuery(jpql);
 		tquery.setParameter("email", email);
 		
 		List<User> list=tquery.getResultList();
@@ -81,8 +77,6 @@ public class AerotopsDaoImpl implements AerotopsDao
 		String jpql= "select u from User u where u.email=:eml AND u.password=:pass";
 		
 		TypedQuery<User> tquery=entityManager.createQuery(jpql, User.class);
-		
-		//Query query = entityManager.createQuery(jpql);
 		tquery.setParameter("eml", email);
 		tquery.setParameter("pass",password);
 		List<User> list=tquery.getResultList();
@@ -121,8 +115,6 @@ public class AerotopsDaoImpl implements AerotopsDao
 	@Override
 	public int readAvailableTickets(int flightId, int noOfTickets, String classType) {
 
-		//System.out.println(flightId);
-		//System.out.println(classType);
 		String jpql = "select v from FlightClass v Inner Join v.flight a where a.flightId=:id AND v.classType=:classT";
 		TypedQuery<FlightClass> tquery = entityManager.createQuery(jpql, FlightClass.class);
 		tquery.setParameter("id", flightId);
@@ -153,8 +145,7 @@ public class AerotopsDaoImpl implements AerotopsDao
 	 public int readLogin(String username, String password) {
 			
 			String jpql= "select a from Admin a where a.username=:unm AND a.password=:pass";
-			TypedQuery<Admin> tquery=entityManager.createQuery(jpql, Admin.class);
-			
+			TypedQuery<Admin> tquery=entityManager.createQuery(jpql, Admin.class);	
 			tquery.setParameter("unm", username);
 			tquery.setParameter("pass",password);
 			List<Admin> list=tquery.getResultList();
@@ -249,16 +240,7 @@ public class AerotopsDaoImpl implements AerotopsDao
 			
 		}
 
-		@Override
-		public List<DynamicDays> readDynamicDay(String codeDays) {
-			String jpql= "select d from DynamicDays d where d.codeDays=:codeDays";	
-			TypedQuery<DynamicDays> tquery=entityManager.createQuery(jpql, DynamicDays.class);
-			tquery.setParameter("codeDays", codeDays);
-			
-			List<DynamicDays> list=tquery.getResultList();
-			
-			return list;
-		}
+		
 
 		@Override
 		public int readAvailableSeats(int flightId, int classId) {

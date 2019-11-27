@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
 @Table(name="passenger")
 @Component
 @SequenceGenerator(name="seq",sequenceName="passengerid_seq", initialValue=100, allocationSize=1)
+//Passenger entity
 public class Passenger {
 	
 	@Id

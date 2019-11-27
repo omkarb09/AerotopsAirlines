@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 @Table(name="transaction")
 @Component
 @SequenceGenerator(name="seq",sequenceName="transactionid_seq", initialValue=1000, allocationSize=1)
+//Transaction Entity
 public class Transaction {
 	@Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")

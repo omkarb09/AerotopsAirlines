@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="admin")
 
+//Admin Entity
 public class Admin {
 	@Id
 	private String username;

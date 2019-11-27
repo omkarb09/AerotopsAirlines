@@ -10,7 +10,48 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
    <title>Booking Ticket</title>
    <script> 
-   	
+   var cities;
+
+	$(document).ready(function getCities()
+	{
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET','data',true);
+		xhr.responseType='text';
+		xhr.send();
+		xhr.onload=function()
+		{
+			if(xhr.status==200)
+			{
+				cities= JSON.parse(xhr.responseText);
+				var output=[], len= cities.length, i;
+				
+				for(i=0;i<len;i++)
+				{
+					output.push(cities[i].city);	
+				}
+				console.log(output);
+				
+				var fromDropDown = document.getElementById("from");
+				var toDropDown = document.getElementById("to");
+				for(var j=0;j<output.length;j++)
+				{
+					var option = document.createElement("option");
+					option.text=output[j];
+					option.value=output[j];
+					fromDropDown.add(option);
+				}
+				
+				for(var j=0;j<output.length;j++)
+				{
+					var option = document.createElement("option");
+					option.text=output[j];
+					option.value=output[j];
+					toDropDown.add(option);
+				}
+			}
+		}
+			
+	});
    
 		function calculateTickets() {
 		   var adult=Number(document.getElementById('adult').value);
@@ -56,10 +97,8 @@
                     <label class="control-label col-sm-5" for="sel1 ">FROM:</label>
                     <div class="col-sm-6">
                     <select class="form-control" id="from" name="departureFrom">
-                      <option value="Mumbai">Mumbai</option>
-                      <option value="Delhi">Delhi</option>
-                      <option value="Chennai">Chennai</option>
-                      <option value="Banglore">Banglore</option>
+                      <option value="">-- Select --</option>
+                      
                     </select>
                   </div>
                     </div>
@@ -68,10 +107,8 @@
                             <label class="control-label col-sm-5" for="sel1 ">TO:</label>
                             <div class="col-sm-6">
                             <select class="form-control" id="to" name="arrivalTo" onchange="removeSame()">
-                              <option value="Mumbai">Mumbai</option>
-                              <option value="Delhi">Delhi</option>
-                              <option value="Chennai">Chennai</option>
-                              <option value="Banglore">Banglore</option>
+                              <option value="">-- Select --</option>
+             
                             </select>
                           </div>
                             </div>

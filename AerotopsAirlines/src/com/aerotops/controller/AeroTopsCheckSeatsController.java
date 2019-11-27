@@ -22,6 +22,7 @@ public class AeroTopsCheckSeatsController {
 	@Autowired
 	HttpSession session;
 	
+	//Check tickets Module
 	@RequestMapping(path="checkTickets.do")
 	public String checkAvailableTickets()
 	{

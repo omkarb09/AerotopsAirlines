@@ -32,11 +32,11 @@
 				<input type="number" name="baseFareFC">
 			
 			     <label for="MaxSeatsinFirst">Maximum Seats For First Class:</label>
-				 <input type="number"  name="maxseatsFC" min="1" max="2">
+				 <input type="number"  name="maxseatsFC" min="1" max="20">
 				
 			
 			    <label for="AvlSeatsinFirst">Available Seats For First Class:</label>
-				<input type="number" name="availseatsFC" min="1" max="2">
+				<input type="number" name="availseatsFC" min="1" max="20">
 				
 			
 				<label for="classType">Enter details for Buisness Class :</label>
@@ -48,11 +48,11 @@
 				
 			
 			    <label for="MaxSeatsinBusiness">Maximum Seats For Buisness Class:</label>
-				<input type="number"  name="maxseatsBC" min="1" max="5">
+				<input type="number"  name="maxseatsBC" min="1" max="20">
 				
 			
 			    <label  for="AvlSeatsinBusiness">Available Seats For Buisness Class:</label>
-				<input type="number" name="availseatsBC" min="1" max="5">
+				<input type="number" name="availseatsBC" min="1" max="20">
 				
 			
 				 <label for="classType">Enter details for Economy Class :</label>
@@ -66,11 +66,11 @@
 				
 			
 			    <label for="MaxSeatsinEconomy"> Maximum Seats For Economy Class:</label>
-				 <input type="number"  name="maxseatsEC" min="1" max="5">
+				 <input type="number"  name="maxseatsEC" min="1" max="20">
 				
 			
 			    <label  for="AvlSeatsinEconomy">Available Seats For Economy Class:</label>
-				<td><input type="number" name="availseatsEC" min="1" max="5"></td>
+				<td><input type="number" name="availseatsEC" min="1" max="20"></td>
 				
 		<input type="submit" value="Add CLass">
 

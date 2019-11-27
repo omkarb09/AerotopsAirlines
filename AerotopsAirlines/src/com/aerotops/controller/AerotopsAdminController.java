@@ -42,7 +42,7 @@ public class AerotopsAdminController {
 		return "AdminLogin";
 	}
 	
-	//
+	//Admin  Login Module
 	@RequestMapping(path="validateLogin", method=RequestMethod.GET)
 	public String validateLogin(@RequestParam("uname") String username, @RequestParam("pwd") String password,HttpServletRequest request)
 		{
@@ -69,6 +69,7 @@ public class AerotopsAdminController {
 		
 	}
 	
+	// Add Flight Module
 	@RequestMapping(path="addFlightPage", method=RequestMethod.GET)
 	public String addFlightPage(){
 		return "AddFlight";
@@ -87,6 +88,8 @@ public class AerotopsAdminController {
 		return "Error";
 	}
 	
+	
+	//Add Class Module
 	@RequestMapping(path="addClassPage", method=RequestMethod.GET)
 	public String addClassPage(){
 		return "AddClass";
@@ -156,7 +159,7 @@ public class AerotopsAdminController {
 		return "Error";
 	}
 	
-	
+	//Cancel Flight Module
 	
 	@RequestMapping(path="cancelFlightPage", method=RequestMethod.GET)
 	public String cancelFlightPage(){
@@ -173,6 +176,7 @@ public class AerotopsAdminController {
 		return "Error";
 	}	
 	
+	//View Flight Module 
 	@RequestMapping(path="viewFlight.do", method=RequestMethod.GET)
 	public String viewFlight(Model model){
 		List<Flight> list = service.findAllFlights();
@@ -180,6 +184,7 @@ public class AerotopsAdminController {
 		return "ViewFlight";
 	}
 	
+	//View Class Module 
 	@RequestMapping(path="viewClass.do", method=RequestMethod.GET)
 	public String viewClass(Model model){
 		List<FlightClass> list = service.findAllCLass();

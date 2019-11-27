@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 @Scope(scopeName="prototype")
 @Table(name="seat")
 @Component
+//Seat Entity
 public class Seat implements Serializable{
 	@Id
 	@Column(name="seat_id")

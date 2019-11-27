@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Table(name="Airport")
 @Scope(scopeName="prototype")
+//Airports Entity
 public class Airports 
 {
 	@Id

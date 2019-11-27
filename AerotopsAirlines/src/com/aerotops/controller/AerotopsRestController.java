@@ -13,14 +13,14 @@ import com.aerotops.model.Airports;
 import com.aerotops.service.AerotopsService;
 
 @RestController
-@RequestMapping(path="data")
+
 public class AerotopsRestController {
 	
 	@Autowired
 	private AerotopsService service;
 	
-	// http://localhost:9000/AerotopsAirlines/data
-	@RequestMapping(method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
+	//view Airports 
+	@RequestMapping(path=("data"),method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Airports> viewAllAirports()
 	{
 		List<Airports> list = service.findAllAirports();

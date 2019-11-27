@@ -21,6 +21,7 @@ import org.springframework.stereotype.Component;
 @Table(name="ticket")
 @Component
 @SequenceGenerator(name="seq",sequenceName="ticketid_seq", initialValue=100, allocationSize=1)
+//Ticket Entity
 public class Ticket implements Serializable
 {
 	
@@ -41,9 +42,7 @@ public class Ticket implements Serializable
 	@Column(name="class_type")
 	private String classType;
 	
-	/*@Column(name="booking_id")
-	private long bookingId;*/
-	
+
 	@ManyToOne
 	@JoinColumn(name="booking_id")
 	private Booking booking;

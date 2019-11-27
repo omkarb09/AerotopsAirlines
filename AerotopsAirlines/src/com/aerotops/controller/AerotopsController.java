@@ -2,6 +2,8 @@ package com.aerotops.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -29,12 +31,50 @@ public class AerotopsController {
 	private Flight flight;
 	
 	@Autowired
+	HttpSession session;
+	
+	@Autowired
 	private AerotopsService service;
+	
 	@RequestMapping(path="searchFlight")
 	public String searchFlightPage(){
 		return "SearchFlight";
 		
 	}
+	
+	@RequestMapping(path="selectFlight")
+	public String selectFlightPage()
+	{
+		return "SelectFlight";
+	}
+	
+	//Search Flight Module
+	@RequestMapping(path="selectFlight.do", method=RequestMethod.POST)
+	public String selectFlight(@RequestParam("from") String from,@RequestParam("to") String to,Model model2) 	    
+	{	
+		List<Flight> list = service.findAllFlights(from,to);
+		model2.addAttribute("selflightlist", list);
+		System.out.println("after model");
+		if(list.size()!=0){
+			System.out.println("in list");
+			return "ViewSearchedFlightUser";
+		}
+		else
+		{
+			return "Error";
+		}
+		
+	}
+	
+	@RequestMapping(path="selectedFlight.do", method=RequestMethod.POST)
+	public String selectedFlight(@RequestParam("flightId") String flightId,@RequestParam("from") String from,@RequestParam("to") String to) 	    
+	{	
+		session.setAttribute("setflightId", flightId);
+		session.setAttribute("setfrom", from);
+		session.setAttribute("setto", to);
+		return "redirect:bookingPage";
+	}
+	
 	
 	@RequestMapping(path="searchFlight.do", method=RequestMethod.POST)
 	public String searchFlight(@RequestParam("from") String from,@RequestParam("to") String to,Model model) 	    

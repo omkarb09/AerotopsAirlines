@@ -16,7 +16,7 @@
 	$(document).ready(function getCities()
 	{
 		var xhr = new XMLHttpRequest();
-		xhr.open('GET','data',true);
+		xhr.open('GET','http://localhost:9000/AerotopsAirlines/data',true);
 		xhr.responseType='text';
 		xhr.send();
 		xhr.onload=function()
@@ -67,8 +67,8 @@
 
 </head>
 <body>
-<jsp:include page="NavBarWithUserLogout.jsp" /> 
-	<form action="searchFlight.do" method="POST">
+<jsp:include page="NavBar.jsp" /> 
+	<form action="selectFlight.do" method="POST">
 	<table >
 	<tr><td>Source<td>
 	

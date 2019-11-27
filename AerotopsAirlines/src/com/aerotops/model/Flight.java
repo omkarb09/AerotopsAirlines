@@ -27,8 +27,9 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="flight")
 @SequenceGenerator(name="seq",sequenceName="flightid_seq", initialValue=4000, allocationSize=1)
+//Flight Entity (inverse entity)
 public class Flight implements Serializable{
-//inverse entity
+
 	@Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
 	@Column(name="flight_id")

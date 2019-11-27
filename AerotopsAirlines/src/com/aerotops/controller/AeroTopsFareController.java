@@ -38,6 +38,7 @@ public class AeroTopsFareController {
 	@Autowired
 	HttpSession session;
 	
+	// Calculate Fare Module
 	@RequestMapping(path="calculateFare.do")
 	public String calculateFare()
 	{
@@ -160,16 +161,11 @@ public class AeroTopsFareController {
 		return "Passenger";
 	}
 	
-	
-	
-	/*@RequestMapping(path="seatSelection")
-	public String seatSelection()
-	{
-		return "SeatSelection";
-	}*/
-	/*@ExceptionHandler({Exception.class})
+
+
+	@ExceptionHandler({Exception.class})
 	public String handleException()
 	{
 		return "Error";
-	}*/
+	}
 }

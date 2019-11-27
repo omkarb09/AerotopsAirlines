@@ -29,6 +29,8 @@ import org.springframework.stereotype.Component;
 @Table(name="booking")
 @Component
 @SequenceGenerator(name="seq",sequenceName="bookingid_seq", initialValue=1000, allocationSize=1)
+
+//Booking Entity
 public class Booking implements Serializable
 {
 	@Id

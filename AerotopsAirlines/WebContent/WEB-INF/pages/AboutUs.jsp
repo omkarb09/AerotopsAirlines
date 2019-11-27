@@ -14,7 +14,7 @@
 <title>About Us</title>
 </head>
 <body>
-	  <jsp:include page="NavBarWithUserLogout.jsp" /> 
+	  <jsp:include page="NavBar.jsp" /> 
               <h1>CORPORATE OVERVIEW</h1> 
               <div class="text-center">
                

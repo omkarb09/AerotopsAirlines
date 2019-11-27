@@ -1,4 +1,3 @@
-
 <%@ page errorPage="Error.jsp" %>
 <!DOCTYPE html>
 <html lang="en">

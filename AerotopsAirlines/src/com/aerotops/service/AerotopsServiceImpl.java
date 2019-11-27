@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aerotops.dao.AerotopsDao;
 import com.aerotops.model.Airports;
 import com.aerotops.model.Booking;
-import com.aerotops.model.DynamicDays;
 import com.aerotops.model.DynamicSeats;
 import com.aerotops.model.Flight;
 import com.aerotops.model.FlightClass;
@@ -242,11 +241,7 @@ public class AerotopsServiceImpl implements AerotopsService
 		return list;
 	}
 
-	@Override
-	public List<DynamicDays> findDynamicDay(String codeDays) {
-		List<DynamicDays> list = getDao().readDynamicDay(codeDays);
-		return list;
-	}
+	
 
 	@Override
 	public List<DynamicSeats> findDynamicSeat(String codeSeats) {

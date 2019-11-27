@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 @Scope(scopeName="prototype")
 @Entity
 @Table(name="dynamic_seats")
+//Dynamic Seats Entity 
 public class DynamicSeats implements Serializable {
 	@Id
 	@Column(name="dynamic_code_seats")

@@ -17,7 +17,6 @@ import com.aerotops.model.Booking;
 import com.aerotops.model.Flight;
 import com.aerotops.model.User;
 import com.aerotops.service.AerotopsService;
-//This is booking controller
 @Controller
 public class AeroTopsBookingController {
 	
@@ -33,26 +32,22 @@ public class AeroTopsBookingController {
 	@Autowired
 	HttpSession session;
 	
+
+	
 	@RequestMapping(path="bookingPage")
 	public String bookingPage()
 	{
 		return "Booking";
 	}
 	
-	//Booking Functionality committed
+	//Booking Functionality 
 	@RequestMapping(path="addBooking.do", method=RequestMethod.POST)
 	public String addBooking(Booking booking,@RequestParam("totalTickets") String totalTickets,@RequestParam("classType") String classType)
 	{
 		booking.setClassId(49);
-		booking.setFlightId(5028);
-		
-		/*flight= service.findFlight(booking.getFlightId());
-		System.out.println(flight);
-		session.setAttribute("flight", flight);*/
-
+		booking.setFlightId(5160);
 		booking.setBookingDate(new Date());
-		booking.setNoOfTickets(Integer.parseInt(totalTickets));
-		//booking.setNoOfTickets(totalTickets);
+		booking.setNoOfTickets(Integer.parseInt(totalTickets));		//booking.setNoOfTickets(totalTickets);
 		
 		String email=(String)session.getAttribute("email");
 		user=service.findUser(email);
@@ -62,17 +57,7 @@ public class AeroTopsBookingController {
 		session.setAttribute("booking", booking);
 		session.setAttribute("classType", classType);
 		
-		//calling service method
-		/*boolean result=service.addBooking(booking);
-		if(result)
-		{
-			return "redirect:checkTickets.do";
-			//return "addTicket.do";
-		}
-		else
-		{
-			return "Error";
-		}*/
+		
 		return "redirect:checkTickets.do";
 		
 	}
