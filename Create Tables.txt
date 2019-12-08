@@ -1,0 +1,121 @@
+create table users
+(
+user_id number(10) PRIMARY KEY,
+title varchar2(4),
+first_name varchar2(20),
+last_name varchar2(20),
+email varchar2(30) UNIQUE NOT NULL,
+password varchar2(16) NOT NULL,
+phone_no number(10),
+date_of_birth date
+)
+
+create table transaction
+(
+transaction_id number(20) PRIMARY KEY,
+date_of_transaction date,
+time_of_transaction timestamp,
+payment_from varchar2(20),
+payment_to varchar2(20),
+amount number(10,2),
+user_id number(10),
+CONSTRAINT USERID_FOREIGN_KEY FOREIGN KEY (user_id) REFERENCES USERS (user_id)
+)
+
+create table flight
+(
+flight_id number(10) PRIMARY KEY,
+from_source varchar2(20),
+to_destination varchar2(20),
+departure_time timestamp,
+arrival_time timestamp,
+date_of_departure date,
+flight_status varchar2(5)
+)
+
+create table class
+(
+class_type varchar2(2),
+base_fare number(10,2),
+no_of_seats number(3),
+flight_id number(10),
+CONSTRAINT FLIGHT_FOREIGN_KEY FOREIGN KEY (flight_id) REFERENCES FLIGHT(flight_id),
+CONSTRAINT CLASS_PK PRIMARY KEY (class_type,flight_id)
+);
+
+create table airport
+(
+code varchar2(4) PRIMARY KEY,
+city varchar2(20) 
+)
+
+create table admin
+(
+username varchar2(20) PRIMARY KEY,
+password varchar2(20) NOT NULL 
+)
+
+create table dynamic_seats(
+dynamic_code_seats varchar2(1) PRIMARY KEY,
+percentage_of_seats number(3),
+percentage_of_seats_amount number(3)
+)
+
+create table dynamic_days(
+dynamic_code_days varchar2(1) PRIMARY KEY,
+days_before_flight number(3),
+percentage_of_days_amount number(3)
+)
+
+create table booking
+(
+booking_id number(10) PRIMARY KEY,
+no_of_tickets number(2),
+trip_type varchar2(10),
+refundable varchar2(5),
+baggage varchar2(5),
+departure_from varchar2(20),
+arrival_to varchar2(20),
+booking_date date,
+user_id number(10),
+flight_id number(10),
+class_type varchar2(2),
+CONSTRAINT USER_ID_FOREIGN_KEY FOREIGN KEY(user_id) REFERENCES USERS(user_id),
+CONSTRAINT CLASS_TYPE_FOREIGN_KEY FOREIGN KEY(class_type,flight_id) REFERENCES CLASS(class_type,flight_id)
+)
+
+create table seat
+(
+seat_id varchar2(4),
+seat_status varchar2(1),
+flight_id number(10),
+class_type varchar2(2),
+CONSTRAINT SEAT_FLIGHT_TYPE_FOREIGN_KEY FOREIGN KEY(class_type,flight_id) REFERENCES CLASS(class_type,flight_id),
+CONSTRAINT SEAT_PK PRIMARY KEY (seat_id,class_type,flight_id)
+)
+
+
+create table ticket
+(
+PNR_No number(15) PRIMARY KEY,
+Total_Fare number(10,2),
+Ticket_Status varchar2(5),
+user_id number(10),
+flight_id number(10),
+seat_name varchar2(4),
+class_type varchar2(2),
+booking_id number(10),
+CONSTRAINT USER_ID_FOREIGN_KEY_T FOREIGN KEY(user_id) REFERENCES USERS(user_id),
+CONSTRAINT BOOKING_ID_FOREIGN_KEY_T FOREIGN KEY(booking_id) REFERENCES BOOKING(booking_id),
+CONSTRAINT FLIGHT_ID_FOREIGN_KEY_T FOREIGN KEY(flight_id) REFERENCES BOOKING(flight_id)
+
+)
+
+
+create table passenger
+(
+passenger_id number(8) PRIMARY KEY,
+name varchar2(20),
+PNR_No number(15),
+CONSTRAINT PNR_No_FOREIGN_KEY FOREIGN KEY(PNR_No) REFERENCES TICKET(PNR_No)
+)
